@@ -69,3 +69,6 @@ __pycache__/
 desktop.ini
 .DS_Store
 default/
+
+# GitHub 에 올리지 않는 로컬 전용 샘플 폴더
+/_from_SampleCodes/
