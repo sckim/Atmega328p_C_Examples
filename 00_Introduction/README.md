@@ -25,3 +25,26 @@ if (PINB & (1 << PB0))  // 비트 검사
 
 ## 📌 참고
 *   `F_CPU`는 실제 클록(기본 16 MHz, 내부 RC 사용 시 8 MHz 또는 1 MHz)과 반드시 일치시켜야 한다. 불일치하면 `_delay_ms()`와 UART 보율이 모두 어긋난다.
+
+---
+
+<!-- AUTO-INDEX:BEGIN -->
+
+## 🗂 폴더 현황 (자동 생성)
+
+기준일 2026-09-20. 예제 폴더 10개, 회로도 보유 2개.
+
+| 폴더 | 소스 | Proteus 회로도 |
+|---|---|---|
+| `001_Template` | 1개 파일 | — |
+| `05_main` | 1개 파일 | — |
+| `1How_to_run_uC` | 1개 파일 | — |
+| `2How_to_run_uC` | 1개 파일 | — |
+| `30_BitTwidding` | 1개 파일 | `LEDUpDown.DSN` |
+| `Check_databss` | 1개 파일 | — |
+| `Demo1` | 1개 파일 | — |
+| `GccApplication1` | 1개 파일 | — |
+| `How_to_run_uC` | 1개 파일 | — |
+| `InitialValues` | 1개 파일 | `Atmega128 Temp.DSN` |
+
+<!-- AUTO-INDEX:END -->

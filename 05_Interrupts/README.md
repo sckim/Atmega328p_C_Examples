@@ -26,3 +26,26 @@
 *   ISR 안에서는 `_delay_ms()`나 `printf`를 쓰지 않는다.
 *   ISR과 메인 루프가 공유하는 변수는 반드시 `volatile`로 선언한다. 2바이트 이상이면 읽는 동안 `cli()`로 보호해야 한다.
 *   INT0/INT1은 지정한 두 핀(PD2, PD3)에만 있고, PCINT는 거의 모든 핀에 있으나 어느 핀이 바뀌었는지는 직접 판별해야 한다.
+
+---
+
+<!-- AUTO-INDEX:BEGIN -->
+
+## 🗂 폴더 현황 (자동 생성)
+
+기준일 2026-09-20. 예제 폴더 10개, 회로도 보유 10개.
+
+| 폴더 | 소스 | Proteus 회로도 |
+|---|---|---|
+| `027_Interrupt` | 3개 파일 | `AVR328P_7Seg_decoder.DSN`; `AVR328P_7Seg_decoder_SC.DSN`; `AVR328P_Testboard_7seg_buttons.pdsprj` |
+| `028_PCInterrupt` | 1개 파일 | `AVR328P_Key_7Seg.DSN`; `Arduino 328.pdsprj` |
+| `028_PC_Interrupt` | 2개 파일 | `AVR328P_Key_7Seg.DSN`; `AVR328P_Testboard.pdsprj` |
+| `041_Timer0Overflow_Int` | 3개 파일 | `AVR328P_Basic_7segD_Ext.pdsprj`; `AVR328P_Key_7Seg.DSN`; `AVR328P_two_7Seg.pdsprj` |
+| `043_Timer0CTC_Int` | 2개 파일 | `AVR328P_7Seg.pdsprj`; `AVR328P_Key_7Seg.DSN`; `AVR328P_Key_7Seg.pdsprj` |
+| `043_Timer0_CTC_int` | 1개 파일 | `AVR328P_Key_7Seg.DSN`; `AVR328P_two_7Seg.pdsprj` |
+| `044_Timer0Overflow_Int_module` | 1개 파일 | `AVR328P_Basic.pdsprj` |
+| `27_Interrupt` | 1개 파일 | `Interrupt.DSN` |
+| `28_Interrupt` | 1개 파일 | `Interrupt.DSN` |
+| `29_Interrupts` | 1개 파일 | `Interrupts.DSN` |
+
+<!-- AUTO-INDEX:END -->

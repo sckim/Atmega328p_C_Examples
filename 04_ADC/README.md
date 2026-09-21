@@ -28,3 +28,21 @@
 *   ADC 클록은 50~200 kHz 범위여야 10비트 정밀도가 보장된다. 16 MHz에서는 프리스케일러 128(125 kHz)을 쓴다.
 *   전원 투입 후 첫 변환은 정확도가 떨어지므로 버린다.
 *   PWM 예제는 이 폴더에 있던 것을 `07_PWM`으로 옮겼다.
+
+---
+
+<!-- AUTO-INDEX:BEGIN -->
+
+## 🗂 폴더 현황 (자동 생성)
+
+기준일 2026-09-20. 예제 폴더 5개, 회로도 보유 5개.
+
+| 폴더 | 소스 | Proteus 회로도 |
+|---|---|---|
+| `050_ADC` | 1개 파일 | `AVR328P_Basic_7seg_ADC_Ext.pdsprj` |
+| `100_ADC_hold` | 1개 파일 | `AVR328P_I2C_Terminal.DSN` |
+| `102_ADC_on_LCD` | 3개 파일 | `ADC.DSN` |
+| `105_ADC_KeyIn_on_LCD` | 3개 파일 | `ADC_KeyIn_on_LCD.DSN` |
+| `108_ADC_serial` | 1개 파일 | `AVR328P_I2C_Terminal.DSN` |
+
+<!-- AUTO-INDEX:END -->

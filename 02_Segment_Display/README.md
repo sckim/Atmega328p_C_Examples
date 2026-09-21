@@ -21,8 +21,37 @@
 | `47_Four7Segments_Input` | 입력값을 받아 표시 |
 | `48_Four7Segments_itoa` | 정수를 자릿수로 분해하여 표시 |
 | `42_Six7Segments` | 여섯 자리 확장 |
-| `74LS595`, `74LS595_Test`, `500_74LS595` | 시프트 레지스터 기본 (`500_74LS595`는 `09_Simple_Sensors`와 중복이어서 이쪽만 남겼다) |
+| `74LS595`, `74LS595_Test`, `500_74LS595` | 시프트 레지스터 기본 (`500_74LS595`는 `20_Applications/Simple_Sensors_Extended`와 중복이어서 이쪽만 남겼다) |
 | `500_74LS596_two` | 시프트 레지스터 직렬 연결(캐스케이드) |
 
 ## 📌 참고
 *   시분할 구동은 타이머 인터럽트로 옮기는 편이 안정적이다. `06_Timers_Counters`와 함께 보면 좋다.
+
+---
+
+<!-- AUTO-INDEX:BEGIN -->
+
+## 🗂 폴더 현황 (자동 생성)
+
+기준일 2026-09-20. 예제 폴더 16개, 회로도 보유 16개, `Project Backups` 백업본 1개.
+
+| 폴더 | 소스 | Proteus 회로도 |
+|---|---|---|
+| `013_7Segments` | 3개 파일 | `AVR328P_7Seg.DSN`; `AVR328P_7Seg.pdsprj`; `AVR328P_7Seg_SC.pdsprj` |
+| `015_Four7Segments` | 2개 파일 | `AVR328P_Basic_4FND.pdsprj`; `AVR328P_FND_7Seg.pdsprj`; `Last Loaded AVR328P_FND_7Seg.pdsprj` |
+| `022_7SegWithButtons` | 2개 파일 | `AVR328P_LCD_7Seg.pdsprj`; `AVR328P_Testboard_decoder.pdsprj`; `AVR328P_Testboard_pullup.pdsprj` |
+| `14_7Segments` | 1개 파일 | `AVR128_LED_7Seg.DSN` |
+| `15_7Segments` | 1개 파일 | `AVR128_LED_7Seg.DSN` |
+| `40_One7Segments` | 1개 파일 | `One7Segments.DSN` |
+| `42_Six7Segments` | 1개 파일 | `42_Six7Segments.DSN` |
+| `45_Four7Segments` | 2개 파일 | `Four7Segments.DSN` |
+| `46_Four7Segments_short` | 2개 파일 | `Four7Segments.DSN` |
+| `47_Four7Segments_Input` | 2개 파일 | `Four7Segments.DSN` |
+| `48_Four7Segments_itoa` | 2개 파일 | `Four7Segments.DSN` |
+| `500_74LS595` | 1개 파일 | `AVR328P_I2C_Terminal.DSN` |
+| `500_74LS596_two` | 1개 파일 | `AVR328P_I2C_Terminal.DSN` |
+| `74LS595` | 1개 파일 | `AVR328P_74LS595.pdsprj` |
+| `74LS595_Test` | 1개 파일 | `AVR328P_74LS595.pdsprj` |
+| `7Segments` | 1개 파일 | `Arduino 328.pdsprj` (백업 1) |
+
+<!-- AUTO-INDEX:END -->

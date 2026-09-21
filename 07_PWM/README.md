@@ -40,3 +40,32 @@ Phase-correct : f = F_CPU / (2 × 프리스케일 × TOP)
 *   DC 모터 구동에는 드라이버 IC(L298N, TB6612 등)가 필요하다. MCU 핀을 직접 연결하지 않는다.
 *   `080_PWM_bitbang_v2`, `081_PWM_Timer0Interrupt2`, `81_PWM`, `82_PWM`은 `04_ADC`에 있던 것을 이 폴더로 옮겼다.
 *   `081_PWM_Timer0Interrupt`은 `05_Interrupts/044_Timer0Overflow_Int_module`과 내용이 같아 `_to_delete`로 옮겼다.
+
+---
+
+<!-- AUTO-INDEX:BEGIN -->
+
+## 🗂 폴더 현황 (자동 생성)
+
+기준일 2026-09-20. 예제 폴더 16개, 회로도 보유 16개, `Project Backups` 백업본 1개.
+
+| 폴더 | 소스 | Proteus 회로도 |
+|---|---|---|
+| `045_PWM_Timer0FPWM` | 2개 파일 | `AVR328P_Basic.pdsprj` |
+| `080_PWM` | 2개 파일 | `AVR328P_PWM.DSN`; `AVR328P_RCServo.pdsprj` |
+| `080_PWM_bitbang` | 1개 파일 | `AVR328P_Basic.pdsprj` |
+| `080_PWM_bitbang_v2` | 1개 파일 | `AVR328P_Basic.pdsprj` |
+| `081_PWM_Dual` | 1개 파일 | `AVR328P_PWM_Key.DSN` |
+| `081_PWM_Timer0Interrupt2` | 3개 파일 | `AVR328P_Basic.pdsprj`; `AVR328P_Basic_SC.pdsprj` |
+| `082_PWM_ADC` | 1개 파일 | `AVR328P_Key_7Seg.DSN` |
+| `082_PWM_Timer0CTC` | 2개 파일 | `AVR328P_Basic.pdsprj` |
+| `082_PWM_Timer0FPWM` | 3개 파일 | `AVR328P_Basic.pdsprj`; `AVR328P_Basic_SC.pdsprj` |
+| `082_PWM_Timer0PWM` | 2개 파일 | `AVR328P_Basic.pdsprj` |
+| `082_PWM_Timer1FPWM` | 2개 파일 | `AVR328P_Basic.pdsprj` |
+| `082_PWM_Timer1PWM` | 1개 파일 | `AVR328P_Basic.pdsprj` |
+| `083_PWM_SetRC_UART` | 5개 파일 | `AVR328P_UART.pdsprj` |
+| `088_FastPWM` | 2개 파일 | `AVR328P_RCServo.pdsprj` (백업 1) |
+| `81_PWM` | 1개 파일 | `AVR328P_I2C_Terminal.DSN` |
+| `82_PWM` | 1개 파일 | `AVR328P_I2C_Terminal.DSN` |
+
+<!-- AUTO-INDEX:END -->

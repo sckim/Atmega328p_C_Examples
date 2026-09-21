@@ -29,4 +29,39 @@
 ## 📌 참고
 *   버튼은 기계적 바운스를 동반한다. 수 ms 지연 또는 다수결 샘플링으로 디바운스를 처리한다.
 *   `01_Arduino_Projects/01_Digital_IO`의 `digitalWrite()`가 내부적으로 수행하는 일이 곧 이 폴더의 코드이다.
-*   C++ 클래스로 GPIO를 감싼 예제는 `15_Integrated_Projects/GPIO_oop`에 있다. 같은 내용이 이 폴더에도 `012_Blink_oop`로 중복되어 있어 `_to_delete`로 옮겼다.
+*   C++ 클래스로 GPIO를 감싼 예제는 `15_Projects/GPIO_oop`에 있다. 같은 내용이 이 폴더에도 `012_Blink_oop`로 중복되어 있어 `_to_delete`로 옮겼다.
+
+---
+
+<!-- AUTO-INDEX:BEGIN -->
+
+## 🗂 폴더 현황 (자동 생성)
+
+기준일 2026-09-20. 예제 폴더 22개, 회로도 보유 13개.
+
+| 폴더 | 소스 | Proteus 회로도 |
+|---|---|---|
+| `002_asmBlink` | 2개 파일 | — |
+| `005_asmBlink` | 1개 파일 | — |
+| `010_Blink` | 6개 파일 | `AVR328P_Basic.pdsprj`; `AVR328P_LCD_7Seg_Terminal.DSN`; `AVR328P_Testboard.pdsprj` |
+| `012_Blink_Arduino` | 16개 파일 | `AVR328P_Basic.pdsprj` |
+| `020_Input_LED` | 1개 파일 | `AVR328P_Key_7Seg.DSN` |
+| `0_Blink` | 1개 파일 | `Arduino 328.pdsprj` |
+| `10_Blink` | 1개 파일 | `AVR128_LED_7Seg.DSN` |
+| `13_Blink` | 1개 파일 | — |
+| `20_Input_LED` | 1개 파일 | `Input.DSN` |
+| `21_Input_LED` | 1개 파일 | `Input.DSN` |
+| `22_Inputs_LED` | 1개 파일 | `Input.DSN` |
+| `23_Input_UpDown` | 1개 파일 | `Input.DSN`; `Input4.DSN` |
+| `24_Input_Toggle` | 1개 파일 | `Input.DSN` |
+| `912_Blink_Arduino` | 8개 파일 | `AVR328P_LCD_7Seg_Terminal.DSN` |
+| `Arduino 328P` | 1개 파일 | — |
+| `Blink` | 1개 파일 | `AVR328P_Basic.pdsprj` |
+| `Blink2` | 1개 파일 | `AVR328P_Basic.pdsprj` |
+| `Blink3` | 1개 파일 | — |
+| `Blink9` | 1개 파일 | — |
+| `GPIORead` | 1개 파일 | — |
+| `asmBlink` | 1개 파일 | — |
+| `assembler_Exam1` | 1개 파일 | — |
+
+<!-- AUTO-INDEX:END -->

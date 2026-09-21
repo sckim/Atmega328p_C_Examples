@@ -18,3 +18,19 @@
 ## 📌 참고
 *   모터 전원은 MCU 전원과 분리하고 GND만 공통으로 묶는다. 같은 레귤레이터를 쓰면 돌입 전류로 MCU가 리셋된다.
 *   브러시 DC 모터와 코일 부하에는 역기전력 보호용 플라이백 다이오드가 필요하다.
+
+---
+
+<!-- AUTO-INDEX:BEGIN -->
+
+## 🗂 폴더 현황 (자동 생성)
+
+기준일 2026-09-20. 예제 폴더 3개, 회로도 보유 3개, `Project Backups` 백업본 2개.
+
+| 폴더 | 소스 | Proteus 회로도 |
+|---|---|---|
+| `810_Motor_Stepper` | 2개 파일 | `AVR328P_Basic.pdsprj` |
+| `811_Motor_RC` | 10개 파일 | `AVR328P_Basic_RC.pdsprj`; `AVR328P_RCServo.pdsprj`; `AVR328P_UART.pdsprj` (백업 2) |
+| `812_Motor_DCM` | 2개 파일 | `AVR328P_Basic_DCM.pdsprj`; `AVR328P_DCM.pdsprj` |
+
+<!-- AUTO-INDEX:END -->

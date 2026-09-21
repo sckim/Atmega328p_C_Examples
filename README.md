@@ -2,106 +2,118 @@
 
 이 폴더는 ATmega328P 마이크로컨트롤러를 **Bare-metal(AVR C 및 Assembly)** 수준에서 제어하기 위한 학습 예제 모음이다. 아두이노 프레임워크의 추상화 뒤에 감추어진 레지스터 제어와 하드웨어의 동작 원리를 직접 다룬다.
 
-같은 상위 폴더의 `01_Arduino_Projects`는 동일한 15단계 주제를 아두이노 프레임워크(`digitalWrite`, `analogRead` 등)로 구현한 대응 저장소이다. 두 폴더의 폴더 번호 체계는 의도적으로 일치시켜 두었으므로, 같은 번호끼리 비교하며 추상화 계층의 차이를 학습할 수 있다.
+같은 상위 폴더의 [`01_Arduino_Examples`](../01_Arduino_Examples/)는 동일한 주제를 아두이노 함수(`digitalWrite`, `analogRead` 등)로 구현한 대응 예제 모음이다. 두 폴더는 **카테고리 번호와 예제 이름을 맞추어** 두었으므로, 같은 번호·이름끼리 나란히 놓고 추상화 계층의 차이를 비교할 수 있다. (예: `01_Arduino_Examples/01_Digital_IO/10_Blink` ↔ `02_AVR_C_Development/01_Digital_IO/10_Blink`)
+
+## 📐 폴더 구성 규칙
+
+*   카테고리 폴더는 `00`~`15`, `20`으로 구성하며 번호는 01과 같다.
+*   예제 폴더는 `NN_이름`이다. **NN이 클수록 어렵다**(개념 진행 → 소스 규모 순). 10 단위 번호는 01과 같은 이름·같은 예제이고, 그 사이 번호(12, 14, 22 …)는 같은 주제의 변형이나 확장이다.
+*   02에만 있는 예제(어셈블리, 라이브러리 계층 등)와 01에 대응 카테고리가 없는 예제(병렬 텍스트 LCD, 센서, GLCD 등)는 `20_Applications`에 있다.
+*   `_to_delete`는 중복·교체로 판단해 격리한 폴더이다. 확인이 끝나면 통째로 삭제해도 된다.
+*   `_from_SampleCodes`는 이번 정리 대상에서 제외한 옛 샘플이다.
 
 ## 🛠 개발 환경 (Development Environments)
 
-두 가지 개발 환경을 모두 지원한다. 각 환경의 설정 파일(`*.cproj`, `platformio.ini`)이 독립적으로 관리되므로 필요에 따라 선택하여 사용한다.
+두 가지 개발 환경을 지원한다. 예제마다 설정 파일이 따로 있으므로 필요에 따라 선택한다.
 
 ### 1. Visual Studio Code + PlatformIO (권장)
 *   **특징**: 현대적인 에디터 환경, 빠른 코드 작성, 간편한 라이브러리 관리.
-*   **사용법**: VS Code에서 해당 프로젝트 폴더를 열면 `platformio.ini`를 인식하여 자동으로 환경을 구성한다.
-*   **팁**: 소스 코드가 루트에 있는 경우 `platformio.ini`에 `src_dir = .` 설정이 포함되어 있다.
+*   **사용법**: VS Code에서 해당 예제 폴더를 열면 `platformio.ini`를 인식하여 자동으로 환경을 구성한다.
+*   **bare-metal 설정**: `platformio.ini`에 `framework`를 지정하지 않는다(`platform = atmelavr`, `board = uno`만 둔다). 새로 작성한 예제는 모두 이 형식이다.
+*   **참고**: `42_LibUART`, `34_Timer0`, `60_PCF8574`, `10_EEPROM`, `10_Keypad`는 소스가 레지스터 위주인데 `framework = arduino`로 남아 있다.
 
 ### 2. Microchip Studio (구 Atmel Studio)
 *   **특징**: 공식 IDE, 강력한 하드웨어 디버깅(Atmel-ICE 등), 레지스터 실시간 모니터링.
-*   **사용법**: 루트의 `uC_Examples.atsln` 솔루션 파일을 열면 모든 프로젝트가 로드된다.
-*   **팁**: 하드웨어의 세부 동작을 한 단계씩 실행(step-by-step)하며 확인할 때 유용하다.
+*   **사용법**: 루트의 `uC_Examples.atsln` 솔루션 파일을 열면 등록된 프로젝트 16개가 로드된다.
+*   **참고**: 이번 정리에서 PlatformIO판을 우선해 남겼기 때문에 `.cproj`가 있는 예제만 등록되어 있다. 새로 작성한 예제는 `.cproj`가 없어 솔루션에 없다.
+
+### 3. 명령행 빌드 (검증용)
+PlatformIO가 설치한 `avr-gcc`로 직접 컴파일해 확인할 수 있다.
+```
+avr-gcc -mmcu=atmega328p -DF_CPU=16000000UL -Os -std=gnu11 -Wall -Wextra -o out.elf src/main.c
+```
 
 ---
 
 ## 📚 학습 커리큘럼 (실제 폴더 구성 기준)
 
+**🆕** 표시는 01에 대응하는 예제를 이번에 레지스터 기반으로 새로 작성한 것이다.
+
 ### 00. Introduction — `00_Introduction`
-*   개발 환경 구축 및 첫 동작 확인 (`How_to_run_uC`, `1How_to_run_uC`, `2How_to_run_uC`)
-*   새 프로젝트의 출발점 (`001_Template`, `05_main`, `Demo1`)
-*   비트 조작(bit twiddling) 기초 (`30_BitTwidding`)
-*   메모리 섹션(.data/.bss) 확인 (`Check_databss`)
+*   개발 환경과 첫 동작 확인 (`10_Template`, `20_How_to_Run`, `30_First_Program`)
+*   비트 조작과 메모리 섹션 (`50_Bit_Twiddling`, `60_Data_BSS`)
+*   C 언어 기초 🆕 (`70_Data_Types`, `72_Operators`, `74_Control_Flow`, `76_Functions`, `78_Arrays_Pointers`, `80_String`)
 
 ### 01. Digital I/O — `01_Digital_IO`
-*   `DDRx`/`PORTx`/`PINx` 레지스터에 의한 LED 출력과 버튼 입력 (`010_Blink`, `020_Input_LED`, `GPIORead`)
-*   Assembly에 의한 초저수준 제어 (`002_asmBlink`, `005_asmBlink`, `assembler_Exam1`)
-*   아두이노 스타일 구현과의 비교 (`012_Blink_Arduino`)
-*   입력 응용 (`23_Input_UpDown`, `24_Input_Toggle`)
+*   `DDRx`/`PORTx`/`PINx` 레지스터에 의한 LED 출력 (`10_Blink`, `12_Blink_Pattern`, `14_Blink_Arduino_Style`, `16_Blink13`, `18_Blink_Full`)
+*   버튼 입력 (`20_Button`, `22_Input_UpDown`, `24_Input_Toggle`)
+*   LED 막대 🆕 (`30_LED_bar`)
+*   Assembly (`60_Asm_Blink`, `62_Asm_Blink2`, `64_Asm_Exam`), C++ 래퍼 (`70_GPIO_OOP`)
 
 ### 02. Segment Display — `02_Segment_Display`
-*   7-세그먼트 구동 원리 (`40_One7Segments`, `45_Four7Segments`, `42_Six7Segments`)
-*   입력·숫자 변환 응용 (`47_Four7Segments_Input`, `48_Four7Segments_itoa`)
-*   시프트 레지스터 74LS595를 이용한 핀 확장 (`500_74LS595`, `500_74LS596_two`, `74LS595_Test`)
+*   7-세그먼트 구동 (`10_7Segments`), 2자리 🆕 (`18_Two_7Segments`), 4자리 (`20_Four7Segments`, `22_Four7Segments_Input`, `24_Four7Segments_itoa`), 6자리 (`30_Six7Segments`)
+*   BCD 디코더 🆕 (`26_BCD_4511`), 버튼 연동 (`40_7SegWithButtons`)
+*   시프트 레지스터 74LS595 (`50_74LS595`, `52_74LS595_Test`, `54_74LS595_Two`)
 
-### 03. Serial Comm (UART) — `03_Serial_Comm`
-*   UART 레지스터 직접 설정과 송수신 기초 (`060_UART`, `90_UART_start`, `91_UART_print`)
-*   표준 입출력(`printf`) 연결 (`062_UART_printf`, `065_LIbUART_printf`)
-*   재사용 가능한 UART 라이브러리 (`064_LibUART`, `UART_Lib`), RS232 레벨 변환 (`RS232`)
+### 03. UART Communication — `03_UART_Communication`
+*   UART 기초와 출력 (`10_Serial`, `20_Print`, `22_UART`, `24_USART`, `26_UART_print`, `30_UART_Reg`)
+*   수신 🆕 (`34_Serial_Input` 폴링, `38_SerialEvent` 수신 인터럽트)
+*   라이브러리화 (`40_UART_myLib`, `42_LibUART`, `44_LibUART_printf`), 통신 응용 (`50_Comm_UART`, `52_SerialTest`)
 
 ### 04. ADC — `04_ADC`
-*   ADC 레지스터 설정과 변환 (`050_ADC`, `100_ADC_hold`, `108_ADC_serial`)
-*   LCD 연동 측정값 표시 (`102_ADC_on_LCD`, `105_ADC_KeyIn_on_LCD`)
-*   ※ 이 폴더에 섞여 있던 PWM 예제 4개는 `07_PWM`으로 옮겼다.
+*   변환과 시리얼 출력 (`10_AnalogReadSerial`, `12_ADC_Basic`, `14_ADC_hold`)
+*   다중 채널 🆕 (`20_ADC_multi`), 변환 완료 인터럽트 🆕 (`30_ADC_Int`), LCD 표시 (`40_ADC_on_LCD`)
 
 ### 05. Interrupts — `05_Interrupts`
-*   외부 인터럽트와 핀 변화 인터럽트 (`027_Interrupt`, `028_PCInterrupt`, `29_Interrupts`)
-*   타이머 인터럽트 기반 구현 (`041_Timer0Overflow_Int`, `043_Timer0CTC_Int`)
-*   ISR의 모듈화 (`044_Timer0Overflow_Int_module`)
+*   `volatile` 🆕 (`10_Volatile`), 외부 인터럽트 (`20_External_Interrupt`, `22_External_Interrupt2`), 핀 변화 인터럽트 (`30_PCInterrupt`, `32_PCInterrupt2`)
+*   타이머 인터럽트 (`40_Timer0_CTC_Int`, `42_Timer0_CTC_Int2`, `50_Timer0_Overflow_Int`, `52_Timer0_Overflow_Int_module`)
 
 ### 06. Timers & Counters — `06_Timers_Counters`
-*   Overflow 및 CTC 모드 (`040_Timer0Overflow`, `042_Timer0CTC`, `71_Timer1Overflow`)
-*   정확한 주기 생성 (`70_Timer0_10mSec`, `75_Timer0_Sec0_5`)
-*   비교 일치 출력 (`73_Timer1OCR`, `76_Timer1_Compare`), LCD 연동 (`78_Timer_with_LCD`)
+*   Overflow / CTC (`10_Timer_Overflow`, `12_Timer1_Overflow`, `20_Timer_CTC`, `22_Timer0_CTC2`), 비교 일치 (`24_Timer1_OCR`, `26_Timer1_Compare`)
+*   주기 생성 (`30_Timer0_10mSec`, `32_Timer0_Sec0_5`, `34_Timer0`), 1MHz 발진 🆕 (`40_Osc1MHz`)
+*   LCD 연동 (`50_LCDTimer`, `52_Timer_with_LCD`), 펄스 폭 측정 (`60_PulseIn`, `62_PulseIn_timer`)
 
 ### 07. PWM — `07_PWM`
-*   Fast PWM / Phase-correct PWM / CTC 기반 PWM (`082_PWM_Timer0FPWM`, `082_PWM_Timer1FPWM`, `082_PWM_Timer0CTC`, `088_FastPWM`)
-*   소프트웨어 PWM (`080_PWM_bitbang`), 2채널 출력 (`081_PWM_Dual`)
-*   ADC 및 UART 연동 듀티 제어 (`082_PWM_ADC`, `083_PWM_SetRC_UART`)
-*   `04_ADC`에서 옮겨 온 예제 (`080_PWM_bitbang_v2`, `081_PWM_Timer0Interrupt2`, `81_PWM`, `82_PWM`)
+*   `analogWrite` 원리 (`10_AnalogWrite`), 소프트웨어 PWM (`12_PWM_bitbang`), 2채널·ADC 연동 (`14_PWM_Dual`, `16_PWM_ADC`)
+*   Timer0 PWM (`20_Timer0_PWM`, `30_Timer0_FastPWM`, `32_Timer0_FastPWM2`, `34_FastPWM`, `36_Timer0_CTC_PWM`), Timer1 PWM (`40_Timer1_PWM`, `42_Timer1_FastPWM`)
+*   인터럽트 기반 (`50_PWM_Timer0Interrupt`), 아두이노 스타일 (`60_PWM_Arduino_Style`)
 
 ### 08. Motors — `08_Motors`
-*   스테핑 모터 (`810_Motor_Stepper`), RC 서보 (`811_Motor_RC`), DC 모터 (`812_Motor_DCM`)
+*   RC 서보 (`10_Servo1`), DC 모터 (`20_DC_Motor`), 스테핑 모터 (`30_Stepper_motor`)
 
-### 09. Simple Sensors — `09_Simple_Sensors`
-*   키패드 스캔 (`026_Keypad`, `26_Keypad(4x4)`)
-*   초음파 거리 측정 (`510_Ultrasound`, `510_Ultrasound_v2`), 로터리 엔코더 (`511_RotaryEncoder`)
-*   74LS595 기반 입출력 확장 (`017_74LS596_two`), TTL 레벨 실습 (`950_ttl_uC`)
+### 09. I2C Communication — `09_I2C_Communication`
+*   버스 스캔 🆕 (`10_i2c_scanner`), 레지스터 쓰기·읽기 🆕 (`20_I2C_write`)
+*   장치 제어 (`30_LCD_I2C`, `40_DS1307`, `50_LM75`, `60_PCF8574`, `62_PCF8575`, `90_LCD_OOP`)
+*   센서 🆕 (`70_MAX30105`, `82_ADXL345`), 관성 센서 복합 프로젝트 (`80_ADXL_ITG`)
 
-### 10. I2C (TWI) Devices — `10_I2C_Devices`
-*   텍스트 LCD 직접 구동 및 라이브러리화 (`030_myTextLCD`, `032_LibTextLCD`, `68_textLCDLib`, `64_textLCD_4bits`)
-*   TWI 레지스터 기반 주변장치 제어 (`220_TWI_LM75` 온도, `221_TWI_RTC` 실시간 시계, `224_TWI_PCF8574`, `225_TWI_PCF8575`)
-*   I2C LCD (`225_TWI_LCD`, `LCD_I2C`, `226_TWO_LCD_OOP`), 관성 센서 (`ADXL_ITG_20150521`)
+### 10. SPI Communication — `10_SPI_Communication`
+*   SPI 기초 (`10_Comm_SPI`), 시프트 레지스터 (`20_SerialShift_595`, `22_74LS595_oop`)
+*   MAX7219 (`30_MAX7219`, `32_MAX7219_Software`), 디지털 가변저항 (`40_DigitalPot`), 12비트 ADC 🆕 (`50_MCP3208`)
 
-### 11. SPI Devices — `11_SPI_Devices`
-*   SPI 기초 (`110_SPI`), 시프트 레지스터 직렬 출력 (`105_SerialShift_595`)
-*   MAX7219 도트 매트릭스 (`110_SPI_MAX7219`, `115_SPI_Software_MAX7219`)
-*   디지털 가변저항 MCP41xx 제어 (`110_SPI_MCP41xx`)
+### 11. One-Wire Communication — `11_OneWire_Communication`
+*   온습도 센서 🆕 (`10_DHT11`), DS18B20 온도 센서 (`20_DS18B20`)
 
-### 12. One-Wire Devices — `12_OneWire_Devices`
-*   1-Wire 프로토콜을 레지스터 수준에서 직접 구현한 DS18B20 온도 측정 (`600_DS18B20`)
-*   Reset/Presence, 비트 슬롯 타이밍, CRC-8 검사를 모두 포함한다
+### 12. EEPROM — `12_EEPROM`
+*   내장 EEPROM (`10_EEPROM`, `20_eeprom_write` 🆕), 외부 24C02 🆕 (`30_eeprom_24c02`)
+*   설정값을 보존하는 메뉴 (`40_Menu_start`, `42_Menu_eeprom`)
 
-### 13. EEPROM Storage — `13_EEPROM_Storage`
-*   내장 EEPROM 읽기/쓰기 (`201_eeprom`, `eeprom`)
-*   설정값을 EEPROM에 보존하는 메뉴 시스템 (`200_Menu_start`, `210_Menu_eeprom`)
+### 13. WatchDog & Sleep — `13_WatchDog_Sleep`
+*   워치독 (`10_Watchdog_Basic`)
+*   슬립 🆕 (`20_Sleep_delay`, `30_IDLE_Sleep_ExtInterrupt`, `40_Deep_Sleep_ExtInterrupt`, `50_Power_Management`)
 
-### 14. Advanced Internal — `14_Advanced_Internal`
-*   워치독 타이머 (`Watchdog`, `900_Wachdog`), 부트로더 (`Bootloader`)
-*   그래픽 LCD 구동 (`056_GLCD_Img`, `057_GLCD_Text`)
+### 14. Bootloader — `14_Bootloader`
+*   리셋 원인 🆕 (`10_MCUSR_ResetReason`), 시그니처·퓨즈 🆕 (`20_Read_Signature_Fuses`), 부트로더 (`30_Bootloader`)
 
-### 15. Integrated Projects — `15_Integrated_Projects`
-*   전 주제를 통합한 종합 예제 (`777_Allfunction`, `777_AllFunctions_OOP`, `777_AllFunctions_OOP_v2`)
-*   객체 지향 구조 실험 (`GPIO_oop`), 모듈·센서 계층 분리 (`Modules`, `Sensors`)
-*   보드 통합 펌웨어 (`MainPro328F_v6`)
+### 15. Projects — `15_Projects`
+*   메뉴·센서·모듈 (`10_Menu_start`, `20_Sensors`, `40_Modules`), 보드 통합 펌웨어 (`30_MainPro328F`)
+*   전 주제 통합 (`50_AllFunctions`, `60_AllFunctions_OOP`), 아두이노 코어 이식 (`70_ArduinoSketch1`), 9DOF IMU (`80_IMU_9DOF`, `82_IMU_9DOF_V21`)
 
-### 99. Archive — `99_Archive`
-*   구버전 솔루션·워크스페이스·시뮬레이션 파일 보관 (`Atmega328P.atsln`, `AVR328P.code-workspace`, `AVR328P_Basic.pdsprj`)
+### 20. Applications — `20_Applications`
+01에 대응 카테고리가 없는 예제 모음이다.
+*   `Simple_Sensors_Extended` : 키패드, 로터리 엔코더, 초음파, 74LS595 확장
+*   `Text_LCD_Parallel` : HD44780 병렬(4/8비트) 텍스트 LCD 구동과 라이브러리화
+*   `Graphic_LCD` : 그래픽 LCD 문자·비트맵 출력
+*   `megaOS` : 협력형 스케줄러 실험
 
 ---
 
@@ -109,42 +121,66 @@
 
 | 파일 | 내용 |
 |---|---|
+| [`WORKLOG.md`](./WORKLOG.md) | **진행 기록.** 지금까지 한 작업, 결정 사항, 현재 상태, 다음에 할 일 |
+| [`PLAN_REORG.md`](./PLAN_REORG.md) | 예제 재정리 계획안(이름 변경, 삭제·격리 목록, 근거) |
+| [`MAPPING_01_to_02.md`](./MAPPING_01_to_02.md) | 01 ↔ 02 예제 대응표. **옛 폴더명 기준이라 일부가 현재와 다르다** |
 | `README_Microchip.md` | 「마이크로시스템설계」 16주차 강의 진행표 원본 |
-| `README_Arduino_Style.md` | 제목 한 줄만 있는 빈 문서 |
-| `LICENSE` | 라이선스 |
+| `uC_Examples.atsln` | Microchip Studio 솔루션 (등록 16개). `.bak`은 경로 갱신 전 백업 |
 
 ---
 
-## ✅ 2026-09-19 정리 내역
+## ✅ 정리 내역
 
-*   루트 및 하위 폴더 README 18개를 실제 폴더 구성과 bare-metal 관점에 맞게 재작성하였다. 이전에는 `01_Arduino_Projects`의 README 복사본이어서 `pinMode`, `digitalWrite` 등 아두이노 함수를 설명하고 있었다.
-*   `04_ADC`에 섞여 있던 PWM 예제 4개를 `07_PWM`으로 옮겼다.
-*   `14_Advanced_Internal` 루트에 떠 있던 `Watchdog.cproj`와 `main.c`를 `Watchdog/` 폴더로 묶었다.
-*   `uC_Examples.atsln`의 프로젝트 경로 30개가 모두 폴더 재구성 이전 이름(`03_ADC_PWM`, `08_SPI_Devices`, `13_Advanced_Internal` 등)을 가리켜 솔루션이 열리지 않는 상태였다. 현행 폴더명으로 일괄 갱신하여 30개 전부 경로가 맞는다.
-*   프로젝트 165개를 **파일명을 무시하고 소스 내용 해시로** 전수 비교하여, 내용이 완전히 같은 5건을 하나만 남기고 `_to_delete/`로 옮겼다. 내역과 복구 방법은 `_to_delete/MANIFEST.md`에 있다.
-*   비어 있던 `12_OneWire_Devices`에 `600_DS18B20`을 새로 작성하였다. avr-gcc 기준 경고 없이 빌드되며, 16 MHz / 8 MHz 모두에서 확인하였다 (flash 2,562 B, RAM 182 B).
+### 2026-09-19
+*   루트 및 하위 폴더 README 18개를 bare-metal 관점으로 재작성(이전에는 01의 복사본).
+*   프로젝트 165개를 소스 내용 해시로 비교해 완전히 같은 5건을 `_to_delete`로 격리.
+*   비어 있던 `12_OneWire`에 `600_DS18B20`(현 `20_DS18B20`)을 새로 작성.
 
-## 🧹 남은 정리 과제
+### 2026-09-21
+*   **카테고리 정렬** : 01의 폴더명·번호에 맞추었다 (`03_UART_Communication`, `09_I2C_Communication`, `10_SPI_Communication`, `11_OneWire_Communication`, `12_EEPROM`, `13_WatchDog_Sleep`, `14_Bootloader`, `15_Projects`).
+*   **`20_Applications` 신설** : 대응 카테고리가 없는 센서·병렬 텍스트 LCD·GLCD·megaOS를 이동.
+*   **99_Archive 정리** : 중복·빌드 산출물을 삭제해 3,619개 → 약 80개로 줄였고, 이후 폴더째 삭제(직접).
+*   **예제 재정리** : 예제 173개를 난이도 순 `NN_이름`으로 개명하고 중복 46개를 정리(완전 중복 16개 삭제, 변형 30개는 `_to_delete`). 근거는 `PLAN_REORG.md`.
+*   **솔루션 갱신** : `uC_Examples.atsln`을 새 경로로 고치고 삭제된 프로젝트 14개를 제거(등록 30개 → 16개).
+*   **신규 예제 작성** : 01에 대응하는 예제 중 02에 없던 24개를 레지스터 기반 C로 작성하고, 아두이노 스케치가 섞여 있던 `10_Template`, `10_Blink`, `20_SerialShift_595`를 교체했다. 모두 avr-gcc로 컴파일해 경고 없음을 확인했다(실기 동작은 미검증).
 
-### 판단이 필요한 건
-*   `11_SPI_Devices/110_SPI_MAX7219_v2`의 소스가 `110_SPI_MAX7219`에 모두 포함되고, 원본에만 파일이 하나 더 있다. 완전 중복이 아니라 포함 관계이다. `uC_Examples.atsln`에 등록된 쪽은 `_v2`이다.
-*   `99_Archive/99_Archive`는 폴더 재구성 이전의 전체 덤프로 소스 1,315개를 담고 있다. 현행 예제 대부분이 여기에 중복 보관되어 있으나 보관이 목적이므로 그대로 두었다.
-*   `09_Simple_Sensors/950_ttl_uC`에는 소스 파일이 없어 내용 판정이 불가능하다.
+## 🧹 남은 과제
 
-### 중복이 아님이 확인된 쌍
-다음 세 쌍은 2021년 원본과 2025년 PlatformIO 재구성판의 관계이며 내용이 서로 다르다. 그대로 둔다.
+*   **하위 폴더 README 일괄 갱신** : 폴더명·번호가 바뀌어 하위 README의 예제 표와 자동 생성 색인이 옛 이름을 가리킨다.
+*   **`MAPPING_01_to_02.md` 갱신** : 옛 폴더명 기준이다.
+*   **01의 `15_Projects`·`20_Applications` 확장 예제**(약 100개) 중 레지스터로 옮길 것 선별·작성.
+*   **`framework = arduino`로 남은 5개**(위 개발 환경 참고)를 bare-metal 설정으로 정리.
+*   **신규 예제용 `.cproj`** 를 만들어 Microchip Studio 솔루션에 등록(필요 시).
+*   **`_to_delete` 확인 후 삭제**, `uC_Examples.atsln.bak` 정리.
+*   **확인 필요** : `LICENSE` 파일이 작업 트리에 없다(git 기준 삭제 상태). `00_Introduction/40_Demo`도 폴더가 없다(작성한 bare-metal 버전 포함).
+*   `_from_SampleCodes`는 이번 정리에서 제외했다.
 
-| 쌍 | 차이 |
+---
+※ 각 폴더 내의 `README.md`에서 상세한 학습 목표와 하드웨어 연결 방법을 확인할 수 있다. (하위 README는 갱신 전이라 옛 폴더명이 남아 있을 수 있다.)
+
+---
+
+## 🗂 폴더 현황
+
+기준일 2026-09-21. 예제 폴더 수는 각 카테고리의 하위 폴더 수이다(`20_Applications`는 그룹 아래 폴더까지 센다).
+
+| 폴더 | 예제 |
 |---|---|
-| `042_Timer0CTC` / `042_Timer0_CTC` | 전자는 `COM0A0` 하드웨어 토글 출력 + PORTB 한 자리, 후자는 출력 비교 핀 비활성 + PORTD BCD 두 자리 |
-| `043_Timer0CTC_Int` / `043_Timer0_CTC_int` | 표시 자릿수와 `OCR0A` 설정 시점(`sei()` 전후)이 다르다 |
-| `028_PCInterrupt` / `028_PC_Interrupt` | 전혀 다른 예제이며, 후자에는 외부 인터럽트 예제 `Interrupt.c`가 추가로 있다 |
-
-### 그 밖에
-*   예제 폴더의 번호 접두사가 세 자리 82개, 두 자리 43개, 한 자리 1개, 접두사 없음 40개로 혼재한다. 세 자리로 통일하려면 `uC_Examples.atsln`의 경로도 함께 고쳐야 한다.
-*   `900_Wachdog`은 철자 오류이다. `Watchdog`과의 관계를 정리할 필요가 있다.
-*   `README_Arduino_Style.md`는 제목 한 줄뿐인 빈 문서이다.
-*   `uC_Examples.atsln.bak`은 경로 일괄 갱신 전에 만든 백업이다. 확인이 끝나면 정리한다.
-
----
-※ 각 폴더 내의 `README.md`에서 상세한 학습 목표와 하드웨어 연결 방법을 확인할 수 있다.
+| [`00_Introduction`](./00_Introduction/) | 11 |
+| [`01_Digital_IO`](./01_Digital_IO/) | 13 |
+| [`02_Segment_Display`](./02_Segment_Display/) | 11 |
+| [`03_UART_Communication`](./03_UART_Communication/) | 13 |
+| [`04_ADC`](./04_ADC/) | 6 |
+| [`05_Interrupts`](./05_Interrupts/) | 9 |
+| [`06_Timers_Counters`](./06_Timers_Counters/) | 14 |
+| [`07_PWM`](./07_PWM/) | 13 |
+| [`08_Motors`](./08_Motors/) | 3 |
+| [`09_I2C_Communication`](./09_I2C_Communication/) | 11 |
+| [`10_SPI_Communication`](./10_SPI_Communication/) | 7 |
+| [`11_OneWire_Communication`](./11_OneWire_Communication/) | 2 |
+| [`12_EEPROM`](./12_EEPROM/) | 5 |
+| [`13_WatchDog_Sleep`](./13_WatchDog_Sleep/) | 5 |
+| [`14_Bootloader`](./14_Bootloader/) | 3 |
+| [`15_Projects`](./15_Projects/) | 9 |
+| [`20_Applications`](./20_Applications/) | 20 |
+| [`_from_SampleCodes`](./_from_SampleCodes/) | 47 |
