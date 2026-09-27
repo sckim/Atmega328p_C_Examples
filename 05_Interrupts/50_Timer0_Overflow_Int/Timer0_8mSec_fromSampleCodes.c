@@ -1,6 +1,6 @@
 /*************************************
- * Purpose: Timer0À» ÀÌ¿ëÇÏ¿© 1ÃÊ¸¶´Ù overflow
- * interrupt¿¡ ÀÇÇÑ LED Shift
+ * Purpose: Timer0ì„ ì´ìš©í•˜ì—¬ 1ì´ˆë§ˆë‹¤ overflow
+ * interruptì— ì˜í•œ LED Shift
  *
  * TIMSK0
  * TCCR0A
@@ -45,8 +45,8 @@
  PORTD = (sec << 4) + msec8;
 
  cli();
- TIMSK0 |= (1 << TOIE0);    // Timer0 ¿À¹öÇÃ·Î ÀÎÅÍ·´Æ® ¿¡ÀÌºí
- // ÀÎÅÍ·´Æ®¸¦ »ç¿ëÇÒ °æ¿ì TIFR0 registerÀÇ flag¸¦ ÀÎÀ§ÀûÀ¸·Î Á¶Á¤ÇÒ ÇÊ¿ä°¡ ¾ø´Ù.
+ TIMSK0 |= (1 << TOIE0);    // Timer0 ì˜¤ë²„í”Œë¡œ ì¸í„°ëŸ½íŠ¸ ì—ì´ë¸”
+ // ì¸í„°ëŸ½íŠ¸ë¥¼ ì‚¬ìš©í•  ê²½ìš° TIFR0 registerì˜ flagë¥¼ ì¸ìœ„ì ìœ¼ë¡œ ì¡°ì •í•  í•„ìš”ê°€ ì—†ë‹¤.
 
  TCCR0A = 0;
  //CS0[2:0]
@@ -57,13 +57,13 @@
  //SREG |= _BV(7);
  TCNT0 = cDelay;
  while (1) {
- // ¿©±â¿¡ ¿øÇÏ´Â ÀÛ¾÷ ·çÆ¾À» ÀÛ¼ºÇÏ¸é µÈ´Ù.
+ // ì—¬ê¸°ì— ì›í•˜ëŠ” ì‘ì—… ë£¨í‹´ì„ ì‘ì„±í•˜ë©´ ëœë‹¤.
  }
  }
  */
 /*************************************
- * Purpose: Timer0À» ÀÌ¿ëÇÏ¿© 1ÃÊ¸¶´Ù overflow
- * interrupt¿¡ ÀÇÇÑ LED Shift
+ * Purpose: Timer0ì„ ì´ìš©í•˜ì—¬ 1ì´ˆë§ˆë‹¤ overflow
+ * interruptì— ì˜í•œ LED Shift
  *
  * TIMSK0
  * TCCR0A
@@ -89,8 +89,8 @@ void setup(void) {
 
 	cli();
 	// SREG &= ~_BV(7);
-	TIMSK0 |= (1 << TOIE0);    // Timer0 ¿À¹öÇÃ·Î ÀÎÅÍ·´Æ® ¿¡ÀÌºí
-	// ÀÎÅÍ·´Æ®¸¦ »ç¿ëÇÒ °æ¿ì TIFR0 registerÀÇ flag¸¦ ÀÎÀ§ÀûÀ¸·Î Á¶Á¤ÇÒ ÇÊ¿ä°¡ ¾ø´Ù.
+	TIMSK0 |= (1 << TOIE0);    // Timer0 ì˜¤ë²„í”Œë¡œ ì¸í„°ëŸ½íŠ¸ ì—ì´ë¸”
+	// ì¸í„°ëŸ½íŠ¸ë¥¼ ì‚¬ìš©í•  ê²½ìš° TIFR0 registerì˜ flagë¥¼ ì¸ìœ„ì ìœ¼ë¡œ ì¡°ì •í•  í•„ìš”ê°€ ì—†ë‹¤.
 
 	//CS0[2:0]
 	TCCR0B |= (1 << CS02);	// Clock/1024
@@ -110,7 +110,7 @@ void dispSeg(unsigned char ch) {
 }
 
 ISR (TIMER0_OVF_vect) {
-	//background·Î Ã³¸®ÇÒ ÀÛ¾÷µé
+	//backgroundë¡œ ì²˜ë¦¬í•  ì‘ì—…ë“¤
 	TCNT0 = cDelay;
 
 	msec8++;

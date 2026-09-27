@@ -198,18 +198,18 @@ int main(void)
 
 #include <avr/io.h>
 #include <util/delay.h>
-#define sbit(x,y)      (x|=(1<<y))  // y¹øÂ° ºñÆ® 1
-#define cbit(x,y)      (x&=~(1<<y)) // y¹øÂ° ºñÆ® 0
-#define tbit(x,y)      (x&(1<<y))   // y ¹øÂ° 1ÀÎÁö °Ë»ç
-#define RS_SET         sbit(PORTC,0) //CÆ÷Æ® 0¹øÂ° 1    0001
-#define RS_CLEAR       cbit(PORTC,0) // C Æ÷Æ® 0¹øÂ° 0
-#define RW_SET         sbit(PORTC,1) // CÆ÷Æ® 1¹øÂ° 1   0010
+#define sbit(x,y)      (x|=(1<<y))  // yë²ˆì§¸ ë¹„íŠ¸ 1
+#define cbit(x,y)      (x&=~(1<<y)) // yë²ˆì§¸ ë¹„íŠ¸ 0
+#define tbit(x,y)      (x&(1<<y))   // y ë²ˆì§¸ 1ì¸ì§€ ê²€ì‚¬
+#define RS_SET         sbit(PORTC,0) //Cí¬íŠ¸ 0ë²ˆì§¸ 1    0001
+#define RS_CLEAR       cbit(PORTC,0) // C í¬íŠ¸ 0ë²ˆì§¸ 0
+#define RW_SET         sbit(PORTC,1) // Cí¬íŠ¸ 1ë²ˆì§¸ 1   0010
 #define RW_CLEAR       cbit(PORTC,1)
-#define E_SET          sbit(PORTC,2) // C Æ÷Æ® 2¹øÂ° 1  0100
+#define E_SET          sbit(PORTC,2) // C í¬íŠ¸ 2ë²ˆì§¸ 1  0100
 #define E_CLEAR        cbit(PORTC,2)
-#define LIGHT_SET      sbit(PORTC,3) //  C Æ÷Æ® 3¹øÂ° 1 1000
+#define LIGHT_SET      sbit(PORTC,3) //  C í¬íŠ¸ 3ë²ˆì§¸ 1 1000
 #define LIGHT_CLEAR    cbit(PORTC,3)
-#define BUSY     tbit(PINB,7)   // BÆ÷Æ®  7 ¹øÂ° 1ÀÎÁö °Ë»ç
+#define BUSY     tbit(PINB,7)   // Bí¬íŠ¸  7 ë²ˆì§¸ 1ì¸ì§€ ê²€ì‚¬
 
 unsigned char display_data1[] = "   HANKYONG   ";
 unsigned char display_data2[] = "  UNIVERSITY  ";
@@ -255,7 +255,7 @@ void lcd_clear(void)
 	lcd_command(0x01);
 }
 
-void lcd_init()// lcd ÃÊ±âÈ­ 
+void lcd_init()// lcd ì´ˆê¸°í™” 
 {
 	E_CLEAR;
 	_delay_ms(20);

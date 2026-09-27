@@ -20,7 +20,7 @@
 #include <util/setbaud.h>
 
 void uart_init(unsigned long iBaudrate) {
-	// UBRRnH(L) ·¹Áö½ºÅÍ¸¦ ÀÌ¿ëÇÑ ¼Û¼ö½Å º¸·¹ÀÌÆ® ¼³Á¤
+	// UBRRnH(L) ë ˆì§€ìŠ¤í„°ë¥¼ ì´ìš©í•œ ì†¡ìˆ˜ì‹  ë³´ë ˆì´íŠ¸ ì„¤ì •
 	UBRR0H = 0x00;
 	switch (iBaudrate) {
 	case 9600:

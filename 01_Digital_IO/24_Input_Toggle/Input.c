@@ -25,7 +25,7 @@ int main(void) {
 	Initialize_Ports();
 	PORTA = 0xFF;
 
-	while (1)  // π´«—∑Á«¡ Ω««‡
+	while (1)  // Î¨¥ÌïúÎ£®ÌîÑ Ïã§Ìñâ
 	{
 		PORTF = SEG[Index];
 
@@ -34,11 +34,11 @@ int main(void) {
 
 		if( flag )	{
 			Index++;
-			//PORTA &= 0xFE;	// PORTA.0∏¶ 0¿∏∑Œ..
+			//PORTA &= 0xFE;	// PORTA.0Î•º 0ÏúºÎ°ú..
 			SET_BIT(PORTA, PA0);
 		}  else	{
 			Index--;
-			//PORTA |= 0x01;	// PORTA.0¿ª 1∑Œ
+			//PORTA |= 0x01;	// PORTA.0ÏùÑ 1Î°ú
 			CLR_BIT(PORTA, PA0);
 		}
 
@@ -47,6 +47,6 @@ int main(void) {
 		if( Index < 0 )
 			Index = 9;
 
-		_delay_ms(200);  // 200ms ¡ˆø¨Ω√≈¥
+		_delay_ms(200);  // 200ms ÏßÄÏó∞ÏãúÌÇ¥
 	}
 }

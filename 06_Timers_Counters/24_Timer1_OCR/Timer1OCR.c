@@ -1,5 +1,5 @@
 /*************************************
-* Purpose: 1ÃÊ¸¶´Ù overflow interrupt¸¦ ÀÌ¿ëÇÏ¿©
+* Purpose: 1ì´ˆë§ˆë‹¤ overflow interruptë¥¼ ì´ìš©í•˜ì—¬
 * LED Shift
 *
 * TIMSK
@@ -26,8 +26,8 @@ ISR (TIMER1_COMPA_vect)	{
 	if (index == 9)
 		index = 0;
 	
-	// CTC mode¿¡¼­´Â match°¡ µÇ¸é TCNT1°¡ ÀÚµ¿À¸·Î ÃÊ±âÈ­µÇ±â ¶§¹®¿¡
-	// ¾Æ·¡¿Í °°ÀÌ Timer1À» ÃÊ±âÈ­ÇÒ ÇÊ¿ä¾ø´Ù.
+	// CTC modeì—ì„œëŠ” matchê°€ ë˜ë©´ TCNT1ê°€ ìë™ìœ¼ë¡œ ì´ˆê¸°í™”ë˜ê¸° ë•Œë¬¸ì—
+	// ì•„ë˜ì™€ ê°™ì´ Timer1ì„ ì´ˆê¸°í™”í•  í•„ìš”ì—†ë‹¤.
 	//TCNT1 = 10000;
 }
 
@@ -35,7 +35,7 @@ int main(void) {
 	DDRA = 0xFF;
 	DDRE = 0xFF;
 
-	// Timer1À» ÃÊ±âÈ­ ÇÑ´Ù.
+	// Timer1ì„ ì´ˆê¸°í™” í•œë‹¤.
 	
 	// Clear interrupt
 	cli();
@@ -59,7 +59,7 @@ int main(void) {
 	TCCR1B |= (1<<CS12);
 	TCCR1B |= (1<<CS10);  // /1024
 
-	// Timer1ÀÇ count°ªÀ» 0À¸·Î ÃÊ±âÈ­ÇÑ´Ù.
+	// Timer1ì˜ countê°’ì„ 0ìœ¼ë¡œ ì´ˆê¸°í™”í•œë‹¤.
 	TCNT1 = 0;
 	OCR1A = cDelay;
 

@@ -1,4 +1,4 @@
-// c·Î ÀÛ¼ºµÈ ÄÚµå°¡ C++¿¡¼­ È£ÃâµÉ¶§ ¹®Á¦°¡ ¾øµµ·Ï
+// cë¡œ ì‘ì„±ëœ ì½”ë“œê°€ C++ì—ì„œ í˜¸ì¶œë ë•Œ ë¬¸ì œê°€ ì—†ë„ë¡
 extern "C" {
 // add your #include statements here
 #include "i2c.h"
@@ -7,7 +7,7 @@ extern "C" {
 #include <util/delay.h>
 #include "PCF8574.h"
 
-//»ı¼ºÀÚ Á¤ÀÇ
+//ìƒì„±ì ì •ì˜
 PCF8574::PCF8574(const uint8_t deviceAddress) {
 	_address = deviceAddress;
 	_dataIn = 0;
@@ -16,7 +16,7 @@ PCF8574::PCF8574(const uint8_t deviceAddress) {
 	_error = PCF8574_OK;
 }
 
-// i2c ÃÊ±âÈ­ ¼³Á¤
+// i2c ì´ˆê¸°í™” ì„¤ì •
 void PCF8574::begin(void) {
 	i2cInit();
 	_delay_us(10);

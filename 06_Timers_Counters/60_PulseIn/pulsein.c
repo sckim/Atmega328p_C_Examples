@@ -54,7 +54,7 @@ unsigned long pulseIn(uint8_t pin, uint8_t state, unsigned long timeout) {
 	} while (stateMask != state);
 
 	do {
-		// return µÉ¶§ ¼ö½ÄÀÇ ¿µÇâÀ» ¹Ş´Â´Ù.
+		// return ë ë•Œ ìˆ˜ì‹ì˜ ì˜í–¥ì„ ë°›ëŠ”ë‹¤.
 		stateMask = (inPortPORT & _BV(pin)) ? 1 : 0;
 		//printf("3. state = %d\r\n", stateMask ? 1 : 0);
 		width++;
@@ -62,7 +62,7 @@ unsigned long pulseIn(uint8_t pin, uint8_t state, unsigned long timeout) {
 			return 0;
 	} while (stateMask == state);
 
-	// ¾Æ·¡ ¼ö½ÄÀº À§ÀÇ ·çÇÁÀÇ ½Ã°£¿¡ µû¶ó ¼öÁ¤µÇ¾î¾ß ÇÑ´Ù.
+	// ì•„ë˜ ìˆ˜ì‹ì€ ìœ„ì˜ ë£¨í”„ì˜ ì‹œê°„ì— ë”°ë¼ ìˆ˜ì •ë˜ì–´ì•¼ í•œë‹¤.
 	return clockCyclesToMicroseconds(width);
 }
 

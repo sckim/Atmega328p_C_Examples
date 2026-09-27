@@ -31,7 +31,7 @@ ISR (TIMER0_OVF_vect) {
 	// prevent generating interrupter in this loop.
 	cli();
 
-	TCNT0 = cDelay; //3. цй╠Б╟╙
+	TCNT0 = cDelay; //3. Л╢┬Й╦╟Й╟▓
 	cnt++;
 	if (cnt >= 125) {
 		cnt = 0;
@@ -52,11 +52,11 @@ ISR (TIMER0_OVF_vect) {
 }
 
 void Timer0_init(void) {
-	//TIMSK=0x01;  //1. Timer0 ©ю╧Жгц╥н юнем╥╢ф╝ ©║юл╨М (TOIE0)
+	//TIMSK=0x01;  //1. Timer0 Л≤╓К╡└М■▄К║° Л²╦М└╟К÷╫М┼╦ Л≈░Л²╢К╦■ (TOIE0)
 	TIMSK0 |= _BV(TOIE0);
 
 	TCCR0A = 0;
-	// 2. Normal, 1/1024 for га╦╝╫╨диюо
+	// 2. Normal, 1/1024 for М■└К╕╛Л┼╓Л╪─Л²╪
 	TCCR0B |= (1 << CS02);	// Clock/1024
 	TCCR0B |= (1 << CS00);	// Clock/1024
 

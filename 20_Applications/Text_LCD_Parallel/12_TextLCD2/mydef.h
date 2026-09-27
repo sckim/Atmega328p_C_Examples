@@ -24,8 +24,8 @@
 #define BIT6    0x40
 #define BIT7    0x80
 
-#define SetBit(x,y)      	( x |= (y) )  	// y¹øÂ° ºñÆ® 1
-#define ClearBit(x,y)      	( x &= (~y) ) 	// y¹øÂ° ºñÆ® 0
+#define SetBit(x,y)      	( x |= (y) )  	// yë²ˆì§¸ ë¹„íŠ¸ 1
+#define ClearBit(x,y)      	( x &= (~y) ) 	// yë²ˆì§¸ ë¹„íŠ¸ 0
 #define CheckBit(x,y) 		( x & (y) )   //True if bit y of byte x=1.
 
 #endif /* MYDEF_H_ */

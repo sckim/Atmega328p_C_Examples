@@ -1,5 +1,5 @@
 ///*************************************
-// * Purpose: Timer0À» ÀÌ¿ëÇÑ OC0A(PD6)¿¡ PWM »ı¼º
+// * Purpose: Timer0ì„ ì´ìš©í•œ OC0A(PD6)ì— PWM ìƒì„±
 // *
 // *
 // *************************************/
@@ -11,7 +11,7 @@
 // from TCNT = (CS / 16000000 ) * (256-x) =10msec
 // x = time * (16000000/CS)
 // if cs = 1024
-// TCNT0°¡ 0ÀÌ¸é 16.384ms ¸¶´Ù overflow ¹ß»ı
+// TCNT0ê°€ 0ì´ë©´ 16.384ms ë§ˆë‹¤ overflow ë°œìƒ
 
 #define DutyRatio	20
 
@@ -35,7 +35,7 @@ int main(void) {
 	DDRB |= (1 << PB5);
 
 	cli();
-	TIMSK0 |= (1 << OCIE0A);    // Timer0 ¿À¹öÇÃ·Î ÀÎÅÍ·´Æ® mask enable
+	TIMSK0 |= (1 << OCIE0A);    // Timer0 ì˜¤ë²„í”Œë¡œ ì¸í„°ëŸ½íŠ¸ mask enable
 	//TIFR0 |= (1<<TOV0);
 
 	Timer0Mode(CTC);		 // Compare capture mode

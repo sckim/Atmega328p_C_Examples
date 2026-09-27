@@ -301,7 +301,7 @@ void LCD_init(void) {
 	LCD_setCursor(cOff);
 }
 
-SIGNAL(SIG_INTERRUPT0)		//©э╨нюнем╥╢ф╝ 0╫ггЮ га╥н╠в╥╔
+SIGNAL(SIG_INTERRUPT0)		//Л≥╦К╤─Л²╦М└╟К÷╫М┼╦ 0Л▀╓М√┴ М■└К║°Й╥╦К·╗
 {
 	cli();
 	updated = 1;
@@ -313,7 +313,7 @@ SIGNAL(SIG_INTERRUPT0)		//©э╨нюнем╥╢ф╝ 0╫ггЮ га╥н╠в╥╔
 	sei();
 }
 
-SIGNAL(SIG_INTERRUPT1)		//©э╨нюнем╥╢ф╝ 0╫ггЮ га╥н╠в╥╔
+SIGNAL(SIG_INTERRUPT1)		//Л≥╦К╤─Л²╦М└╟К÷╫М┼╦ 0Л▀╓М√┴ М■└К║°Й╥╦К·╗
 {
 	cli();
 	updated = 1;
@@ -324,7 +324,7 @@ SIGNAL(SIG_INTERRUPT1)		//©э╨нюнем╥╢ф╝ 0╫ггЮ га╥н╠в╥╔
 	sei();
 }
 
-SIGNAL(SIG_INTERRUPT2)		//©э╨нюнем╥╢ф╝ 0╫ггЮ га╥н╠в╥╔
+SIGNAL(SIG_INTERRUPT2)		//Л≥╦К╤─Л²╦М└╟К÷╫М┼╦ 0Л▀╓М√┴ М■└К║°Й╥╦К·╗
 {
 	cli();
 	updated = 1;
@@ -340,7 +340,7 @@ SIGNAL(SIG_INTERRUPT2)		//©э╨нюнем╥╢ф╝ 0╫ггЮ га╥н╠в╥╔
 	sei();
 }
 
-SIGNAL(SIG_INTERRUPT3)		//©э╨нюнем╥╢ф╝ 0╫ггЮ га╥н╠в╥╔
+SIGNAL(SIG_INTERRUPT3)		//Л≥╦К╤─Л²╦М└╟К÷╫М┼╦ 0Л▀╓М√┴ М■└К║°Й╥╦К·╗
 {
 	cli();
 	updated = 1;
@@ -356,7 +356,7 @@ SIGNAL(SIG_INTERRUPT3)		//©э╨нюнем╥╢ф╝ 0╫ггЮ га╥н╠в╥╔
 	sei();
 }
 
-SIGNAL(SIG_INTERRUPT4)		//©э╨нюнем╥╢ф╝ 4╫ггЮ га╥н╠в╥╔
+SIGNAL(SIG_INTERRUPT4)		//Л≥╦К╤─Л²╦М└╟К÷╫М┼╦ 4Л▀╓М√┴ М■└К║°Й╥╦К·╗
 {
 	cli();
 /*
@@ -379,7 +379,7 @@ SIGNAL(SIG_INTERRUPT4)		//©э╨нюнем╥╢ф╝ 4╫ггЮ га╥н╠в╥╔
 	sei();
 }
 
-SIGNAL(SIG_INTERRUPT5)		//©э╨нюнем╥╢ф╝ 0╫ггЮ га╥н╠в╥╔
+SIGNAL(SIG_INTERRUPT5)		//Л≥╦К╤─Л²╦М└╟К÷╫М┼╦ 0Л▀╓М√┴ М■└К║°Й╥╦К·╗
 {
 	cli();
 
@@ -399,10 +399,10 @@ SIGNAL(SIG_INTERRUPT5)		//©э╨нюнем╥╢ф╝ 0╫ггЮ га╥н╠в╥╔
 
 void interruptEnable(void) {
 	// External Interrupt Mask Register
-	EIMSK = 0x3F;		//2аЬ╪Ж (16аЬаж:0x41)
+	EIMSK = 0x3F;		//2Л╖└Л┬≤ (16Л╖└Лё╪:0x41)
 
 	// External Interrupt Control Register
-	EICRA = 0xFF;		//2аЬ╪Ж (16аЬ╪Ж:0x02)
+	EICRA = 0xFF;		//2Л╖└Л┬≤ (16Л╖└Л┬≤:0x02)
 	EICRB = 0x0F;
 	sei();
 }

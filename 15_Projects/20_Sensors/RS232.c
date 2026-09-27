@@ -17,7 +17,7 @@ void UART0_INIT(unsigned int ubrr)
 }
 
 
-// UART0 µ¥ÀÌÅÍ ¼ö½Å ÇÁ·Î±×·¥
+// UART0 ë°ì´í„° ìˆ˜ì‹  í”„ë¡œê·¸ë¨
 unsigned char UART0_GetChar(void)
  { 
      while(!(UCSR0A & 0x80)) ; 
@@ -25,7 +25,7 @@ unsigned char UART0_GetChar(void)
  }
 
 
-// UART0 µ¥ÀÌÅÍ ¼Û½Å ÇÁ·Î±×·¥
+// UART0 ë°ì´í„° ì†¡ì‹  í”„ë¡œê·¸ë¨
 void UART0_PutChar(unsigned char TX_data)
 {    
      while(!(UCSR0A & 0x20)) ; 
@@ -34,12 +34,12 @@ void UART0_PutChar(unsigned char TX_data)
 
 
 
-// UART0 µ¥ÀÌÅÍ ¼Û½Å ÇÁ·Î±×·¥ (¹®ÀÚ¿­)
+// UART0 ë°ì´í„° ì†¡ì‹  í”„ë¡œê·¸ë¨ (ë¬¸ìì—´)
 void USART0_PutStr(char *tx_str)
 {
 	while(*tx_str != '\0')
 	{
-		UART0_PutChar(*tx_str);//ÇÑ°³ÀÇ ¹®ÀÚ¾¿ Ãâ·Â
+		UART0_PutChar(*tx_str);//í•œê°œì˜ ë¬¸ìì”© ì¶œë ¥
 		tx_str++;
 	}
 }

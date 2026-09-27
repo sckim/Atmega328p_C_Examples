@@ -1,8 +1,8 @@
 /*=======================================================*/
-//4Àå_¿¹Á¦4-1(a)
+//4ì¥_ì˜ˆì œ4-1(a)
 //
-//overflow Å¸ÀÌ¸Ó0 »ç¿ë
-//16MHz¶ó´Â °¡Á¤
+//overflow íƒ€ì´ë¨¸0 ì‚¬ìš©
+//16MHzë¼ëŠ” ê°€ì •
 /*=======================================================*/
 #include <avr/io.h>
 #include <avr/interrupt.h>
@@ -39,11 +39,11 @@ void port_init(void) {
 }
 
 void Timer0_init(void) {
-	//TIMSK=0x01;  //1. Timer0 ¿À¹öÇÃ·Î ÀÎÅÍ·´Æ® ¿¡ÀÌºí (TOIE0)
+	//TIMSK=0x01;  //1. Timer0 ì˜¤ë²„í”Œë¡œ ì¸í„°ëŸ½íŠ¸ ì—ì´ë¸” (TOIE0)
 	TIMSK |= (1 << TOIE0);
 	TIFR |= (1 << TOV0);
 
-	// 2. Normal, 1/1024 for ÇÁ¸®½ºÄÉÀÏ
+	// 2. Normal, 1/1024 for í”„ë¦¬ìŠ¤ì¼€ì¼
 	TCCR0 = (1 << CS02) | (1 << CS01) | (1 << CS00);
 
 	// 3. Set counter
@@ -63,7 +63,7 @@ SIGNAL(SIG_OVERFLOW0) {
 	// prevent generating interrupter in this loop.
 	cli();
 
-	TCNT0 = 0xff - TimerValue; //3. ÃÊ±â°ª
+	TCNT0 = 0xff - TimerValue; //3. ì´ˆê¸°ê°’
 	cnt++;
 	number++;
 	if(number>9)

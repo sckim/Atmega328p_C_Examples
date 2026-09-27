@@ -264,7 +264,7 @@ void LCDWriteString(const char *msg) {
 
 	 So it will be printed like.
 
-	 Temp is 30°C
+	 Temp is 30ìºœ
 
 	 In the same way you can insert any syblom numbered 0-7
 

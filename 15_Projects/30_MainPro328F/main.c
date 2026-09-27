@@ -9,11 +9,11 @@
 
    - LED setting
      LED1 : PD3 , LED 2 : PD4
-     Àü¿ø ÀÎ°¡½Ã LED1 Á¡µî ½Ã°åÀ½ 
+     ì „ì› ì¸ê°€ì‹œ LED1 ì ë“± ì‹œê²¼ìŒ 
     
     - MAX8877
-     SHDN : PB7 (MUC Àü¿ø¿ë, high Àü¿øÀÎ°¡, low ShutDown) 
-     SHDN1 : PD6 (ACODE-300 Àü¿ø¿ë, high Àü¿øÀÎ°¡, low ShutDown))
+     SHDN : PB7 (MUC ì „ì›ìš©, high ì „ì›ì¸ê°€, low ShutDown) 
+     SHDN1 : PD6 (ACODE-300 ì „ì›ìš©, high ì „ì›ì¸ê°€, low ShutDown))
 */
 
 
@@ -86,13 +86,13 @@ unsigned char	ucCali_Z = 0;			// Z calibration
 unsigned char	Timer_Flag = 0;		
 
 
-/* ÀÚÀÌ·Î ¼¾¼­ ÃøÁ¤ º¯¼ö */
+/* ìì´ë¡œ ì„¼ì„œ ì¸¡ì • ë³€ìˆ˜ */
 volatile signed int gyrox = 0;
 volatile signed int gyroy = 0;
 volatile signed int gyroz = 0;
 
 
-/* °¡¼Óµµ ¼¾¼­ ÃøÁ¤ º¯¼ö */
+/* ê°€ì†ë„ ì„¼ì„œ ì¸¡ì • ë³€ìˆ˜ */
 volatile signed int adxlx = 0;
 volatile signed int adxly = 0;
 volatile signed int adxlz = 0;
@@ -122,11 +122,11 @@ int main(void)
 	i2cInit();
 	delay_ms(10);
 	
-	//  /* adxl345 ·¹Áö½ºÅÍ ÃÊ±âÈ­ */ 
+	//  /* adxl345 ë ˆì§€ìŠ¤í„° ì´ˆê¸°í™” */ 
 	ADXl345_INIT(); 
 	_delay_ms(10);	
 		
-	/* ITG-3022 ·¹Áö½ºÅÍ ÃÊ±âÈ­ */ 
+	/* ITG-3022 ë ˆì§€ìŠ¤í„° ì´ˆê¸°í™” */ 
 	ITG3200_INIT(); 
 	_delay_ms(10);
 

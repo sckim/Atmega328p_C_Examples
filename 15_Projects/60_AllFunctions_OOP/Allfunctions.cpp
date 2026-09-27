@@ -125,7 +125,7 @@ int main(void) {
 //checkGPIO();
 
 	uart_init(UART_BAUD_SELECT(9600, 16000000L));
-// UART°¡ ÀÎÅÍ·´Æ® ¹æ½ÄÀ» »ç¿ëÇÏ¹Ç·Î ¹İµå½Ã globral interrupt¸¦ enableÇØ¾ß ÇÑ´Ù.
+// UARTê°€ ì¸í„°ëŸ½íŠ¸ ë°©ì‹ì„ ì‚¬ìš©í•˜ë¯€ë¡œ ë°˜ë“œì‹œ globral interruptë¥¼ enableí•´ì•¼ í•œë‹¤.
 	sei();
 
 	while (1) {

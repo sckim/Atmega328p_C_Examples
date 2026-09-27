@@ -20,7 +20,7 @@ int main(void) {
 
 	Initialize_Ports();
 
-	while (1)  // ¹«ÇÑ·çÇÁ ½ÇÇà
+	while (1)  // ë¬´í•œë£¨í”„ ì‹¤í–‰
 	{
 		PORTF = SEG[Index];
 
@@ -34,6 +34,6 @@ int main(void) {
 		if( Index < 0 )
 			Index = 9;
 
-		_delay_ms(200);  // 200ms Áö¿¬½ÃÅ´
+		_delay_ms(200);  // 200ms ì§€ì—°ì‹œí‚´
 	}
 }

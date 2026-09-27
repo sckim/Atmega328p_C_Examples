@@ -1,4 +1,4 @@
-﻿# 13. WatchDog & Sleep
+# 13. WatchDog & Sleep
 
 ## 🎯 학습 목표
 *   워치독 타이머로 시스템 행(hang)을 감지하고 자동 복구한다.

@@ -1,6 +1,6 @@
 /*************************************
-* Purpose: Timer1À» ÀÌ¿ëÇÏ¿© 1ÃÊ¸¶´Ù overflow
-* interrupt¿¡ ÀÇÇÑ LED Shift
+* Purpose: Timer1ì„ ì´ìš©í•˜ì—¬ 1ì´ˆë§ˆë‹¤ overflow
+* interruptì— ì˜í•œ LED Shift
 *
 * TIMSK
 * TCCR1B
@@ -18,7 +18,7 @@ unsigned char FND[10] = { 0XC0, 0XF9, 0XA4, 0XB0, 0X99, 0X92, 0X82, 0XD8, 0X80, 
 volatile unsigned int index = 0;
 
 ISR (TIMER1_OVF_vect)	{
-// SIGNALÀº AVR studio v.7¿¡¼­´Â ÄÄÆÄÀÏ ¾È µÊ
+// SIGNALì€ AVR studio v.7ì—ì„œëŠ” ì»´íŒŒì¼ ì•ˆ ë¨
 // SIGNAL(SIG_OVERFLOW1) {
 	PORTA = LED_ARRAY[index];
 	PORTF = FND[index];

@@ -64,7 +64,7 @@ void UART0_Init()
 	UBRR0L =51;        		// Baud rate
 	UCSR0A = 0x00;
 	UCSR0B = 0x18;                              // Rx/Tx enable, 8 data,
-	UCSR0C = 0x06;                              // ºñµ¿±â½Ä, ÆĞ¸®Æ¼±İÁö, ½ºÅ¾ºñÆ®1°³, 8ºñÆ®µ¥ÀÌÅ¸Àü¼Û
+	UCSR0C = 0x06;                              // ë¹„ë™ê¸°ì‹, íŒ¨ë¦¬í‹°ê¸ˆì§€, ìŠ¤íƒ‘ë¹„íŠ¸1ê°œ, 8ë¹„íŠ¸ë°ì´íƒ€ì „ì†¡
   
 	fdevopen(UART0_PutChar, NULL);				// Set UART0 for printf	
 }

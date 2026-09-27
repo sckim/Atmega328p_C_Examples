@@ -6,14 +6,14 @@
 char getch(void) {
 	unsigned char data;
 
-	//µ¥ÀÌÅÍ¸¦ ¹ŞÀ» ¶§±îÁö ´ë±â
+	//ë°ì´í„°ë¥¼ ë°›ì„ ë•Œê¹Œì§€ ëŒ€ê¸°
 	while ((UCSR0A & (1 << RXC0)) == 0)
 		;
 
 	//while (bit_is_set(UCSR0A,RXC0);
 	//while (!(UCSR0A & 0x80);
 
-	// Receiver register¿¡ º¸³»°íÀÚ ÇÏ´Â µ¥ÀÌÅÍ¸¦ ÀúÀå
+	// Receiver registerì— ë³´ë‚´ê³ ì í•˜ëŠ” ë°ì´í„°ë¥¼ ì €ì¥
 	data = UDR0;
 
 	return data;

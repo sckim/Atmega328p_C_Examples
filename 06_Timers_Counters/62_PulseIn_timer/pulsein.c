@@ -71,7 +71,7 @@ unsigned long micros() {
 	if ((TIFR0 & _BV(TOV0)) && (t < 255))
 		m++;
 
-	// interrupt enableÀÌ Æ÷ÇÔµÇ¾î ÀÖ´Ù.
+	// interrupt enableì´ í¬í•¨ë˜ì–´ ìžˆë‹¤.
 	SREG = oldSREG;
 
 	return ((m << 8) + t) * (64 / clockCyclesPerMicrosecond());

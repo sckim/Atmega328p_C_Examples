@@ -1,4 +1,4 @@
-﻿
+
 #define sei()  __asm__ __volatile__ ("sei" ::: "memory")
 #define cli()  __asm__ __volatile__ ("cli" ::: "memory")
 

@@ -78,7 +78,7 @@ void UART0_Init(unsigned char Index)
 	UCSR0B = 0x18;                              // Rx/Tx enable, 8 data,
 	UCSR0B |= ( 1<< 7 );
 
-	UCSR0C = 0x06;                              // ºñµ¿±â½Ä, ÆÐ¸®Æ¼±ÝÁö, ½ºÅ¾ºñÆ®1°³, 8ºñÆ®µ¥ÀÌÅ¸Àü¼Û
+	UCSR0C = 0x06;                              // ë¹„ë™ê¸°ì‹, íŒ¨ë¦¬í‹°ê¸ˆì§€, ìŠ¤íƒ‘ë¹„íŠ¸1ê°œ, 8ë¹„íŠ¸ë°ì´íƒ€ì „ì†¡
           
 
 	fdevopen(UART0_PutChar, NULL);				// Set UART0 for printf	

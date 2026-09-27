@@ -144,8 +144,8 @@ void GLCD_String(const char* image)	/* GLCD string write function */
 		{
 			byte = pgm_read_byte(&image[k+column]);
 			GLCD_Data(~byte);/* Print 64 column of each page */
-			// ¾Æ·¡ delay´Â proteus¿¡¼­ ½Ã¹Ä·¹ÀÌ¼Ç ÇÒ¶§¸¸ Ãß°¡
-			// ÀÌ°ÍÀÌ ¾øÀ¸´Ï Ãâ·Â À§Ä¡¿¡ ¹®Á¦°¡ ¹ß»ıÇÔ.
+			// ì•„ë˜ delayëŠ” proteusì—ì„œ ì‹œë®¬ë ˆì´ì…˜ í• ë•Œë§Œ ì¶”ê°€
+			// ì´ê²ƒì´ ì—†ìœ¼ë‹ˆ ì¶œë ¥ ìœ„ì¹˜ì— ë¬¸ì œê°€ ë°œìƒí•¨.
 			_delay_ms(1);
 		}
 		Command_Port ^= (1 << GLCD_CS1);/* Change segment controller */

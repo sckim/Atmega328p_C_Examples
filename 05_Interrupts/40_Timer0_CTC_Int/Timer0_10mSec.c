@@ -1,6 +1,6 @@
 /*************************************
- * Purpose: Timer0À» ÀÌ¿ëÇÏ¿© 1ÃÊ¸¶´Ù overflow
- * interrupt¿¡ ÀÇÇÑ LED Shift
+ * Purpose: Timer0ì„ ì´ìš©í•˜ì—¬ 1ì´ˆë§ˆë‹¤ overflow
+ * interruptì— ì˜í•œ LED Shift
  *
  * TIMSK
  * TCCR0
@@ -42,7 +42,7 @@ int main(void) {
 
 	cli();
 
-	TIMSK0 |= (1 << OCIE0A);    // Timer0 ¿À¹öÇÃ·Î ÀÎÅÍ·´Æ® ¿¡ÀÌºí
+	TIMSK0 |= (1 << OCIE0A);    // Timer0 ì˜¤ë²„í”Œë¡œ ì¸í„°ëŸ½íŠ¸ ì—ì´ë¸”
 	TCCR0A |= (1<< WGM01);		// CTC mode
 	TCCR0A |= _BV(COM0A0);
 

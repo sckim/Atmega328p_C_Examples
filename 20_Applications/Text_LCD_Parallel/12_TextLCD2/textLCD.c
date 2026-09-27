@@ -15,15 +15,15 @@
 #define LCDControl		PORTC	//LCD control line
 #define	LCDData			PORTB	//LCD data line
 
-#define RS_SET         	SetBit(LCDControl,LCD_RS) 	//CÆ÷Æ® 0¹øÂ° 1    0001
-#define RS_CLEAR       	ClearBit(LCDControl,LCD_RS) 	// C Æ÷Æ® 0¹øÂ° 0
-#define RW_SET         	SetBit(LCDControl,LCD_RW) 	// CÆ÷Æ® 1¹øÂ° 1   0010
+#define RS_SET         	SetBit(LCDControl,LCD_RS) 	//Cí¬íŠ¸ 0ë²ˆì§¸ 1    0001
+#define RS_CLEAR       	ClearBit(LCDControl,LCD_RS) 	// C í¬íŠ¸ 0ë²ˆì§¸ 0
+#define RW_SET         	SetBit(LCDControl,LCD_RW) 	// Cí¬íŠ¸ 1ë²ˆì§¸ 1   0010
 #define RW_CLEAR       	ClearBit(LCDControl,LCD_RW)
-#define E_SET          	SetBit(LCDControl,LCD_En) 	// C Æ÷Æ® 2¹øÂ° 1  0100
+#define E_SET          	SetBit(LCDControl,LCD_En) 	// C í¬íŠ¸ 2ë²ˆì§¸ 1  0100
 #define E_CLEAR        	ClearBit(LCDControl,LCD_En)
-//#define LIGHT_SET      	SetBit(LCDControl,3) 	//  C Æ÷Æ® 3¹øÂ° 1 1000
+//#define LIGHT_SET      	SetBit(LCDControl,3) 	//  C í¬íŠ¸ 3ë²ˆì§¸ 1 1000
 //#define LIGHT_CLEAR    	ClearBit(LCDControl,3)
-#define BUSY     	   	CheckBit(LCDData,LCD_Busy)   	// BÆ÷Æ®  7 ¹øÂ° 1ÀÎÁö °Ë»ç
+#define BUSY     	   	CheckBit(LCDData,LCD_Busy)   	// Bí¬íŠ¸  7 ë²ˆì§¸ 1ì¸ì§€ ê²€ì‚¬
 
 unsigned char display_data1[16] = "Welcome";
 unsigned char display_data2[16] = "N403";
@@ -76,7 +76,7 @@ void lcd_command(unsigned char lcd_data) {
 	lcd_enable();
 }
 
-void lcd_init() // lcd ÃÊ±âÈ­
+void lcd_init() // lcd ì´ˆê¸°í™”
 {
 	E_CLEAR;
 	_delay_ms(20);
@@ -103,20 +103,20 @@ void lcd_write_char(unsigned char lcd_data) {
 void lcd_display() {
 	unsigned char i;
 	//LIGHT_SET;
-	lcd_command(0x0E);	//µğ½ºÇÃ·¹ÀÌ¸¦ ÄÑ°í, Ä¿¼­¸¦ ²¨Áü
-	lcd_command(0x80);	//È¨ ¸®ÅÏ
+	lcd_command(0x0E);	//ë””ìŠ¤í”Œë ˆì´ë¥¼ ì¼œê³ , ì»¤ì„œë¥¼ êº¼ì§
+	lcd_command(0x80);	//í™ˆ ë¦¬í„´
 	lcd_command(0x0c);
 	for (i = 0; i < 16; i++) {
 		lcd_write_char(display_data1[i]);
 	}
-	lcd_command(0xc0);	// µÎ¹øÂ° ¶óÀÎ ½ÃÀÛÁ¡À¸·Î Ä¿¼­ ÀÌµ¿
+	lcd_command(0xc0);	// ë‘ë²ˆì§¸ ë¼ì¸ ì‹œì‘ì ìœ¼ë¡œ ì»¤ì„œ ì´ë™
 	for (i = 0; i < 16; i++) {
 		lcd_write_char(display_data2[i]);
 	}
 }
 int main() {
-	LCDControlDir = 0xff;	// LCD Data port¸¦ Ãâ·ÂÀ¸·Î ¼³Á¤
-	LCDDataDir = 0xff;	// LCD Á¦¾î¶óÀÎ
+	LCDControlDir = 0xff;	// LCD Data portë¥¼ ì¶œë ¥ìœ¼ë¡œ ì„¤ì •
+	LCDDataDir = 0xff;	// LCD ì œì–´ë¼ì¸
 
 	LCDControl = 0x00;
 

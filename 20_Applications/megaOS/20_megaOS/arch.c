@@ -1,4 +1,4 @@
-﻿#include <os.h> 
+#include <os.h> 
 
 static void uart_tx(char ch, FILE *stream);
 

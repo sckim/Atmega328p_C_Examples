@@ -33,14 +33,14 @@ volatile char TimerOn = 0;
 
 void InitExternalInT(void)
 {
-    EIMSK = 0b00000011;		//INT0, 1 ╧Ь ╩Г©К ╪Ёа╓
+    EIMSK = 0b00000011;		//INT0, 1 К╡┬ Л┌╛Л ╘ Л└╓Л═∙
     //EIMSK = 0x01;
-    EICRA = 0b00001010; 	//INT0, 1 го╟╜╦П╪╜╦╝©║╪╜ ╣©юш╣г╣╣╥о ╪Ёа╓
+    EICRA = 0b00001010; 	//INT0, 1 М∙≤Й╟∙К╙╗Л└°К╕╛Л≈░Л└° К▐≥Л·▒К░≤К▐└К║² Л└╓Л═∙
     //EIMSK = 0x02;
 }
 
-// юнем╥╢ф╝ ╪ЖгЮ гт╪Ж╢б ╬ф╥║©м ╟╟юл
-// SIGNAL(SIG_INTERRUPTn)ю╦╥н го©╘ nюл юнем╥╢ф╝ ╧Ьхё
+// Л²╦М└╟К÷╫М┼╦ Л┬≤М√┴ М∙╗Л┬≤К┼■ Л∙└К·≤Л≥─ Й╟≥Л²╢
+// SIGNAL(SIG_INTERRUPTn)Л°╪К║° М∙≤Л≈╛ nЛ²╢ Л²╦М└╟К÷╫М┼╦ К╡┬М≤╦
 ISR(INT0_vect)
 {
 	hour++;
@@ -76,15 +76,15 @@ ISR (TIMER0_OVF_vect) {
 	if (hour == 24)
 		hour = 0;
 
-	TCNT0 = 0xFF - cDelay + 1;    //цй╠Б╟╙
+	TCNT0 = 0xFF - cDelay + 1;    //Л╢┬Й╦╟Й╟▓
 }
 
 void Timer0Init(void) {
 /*
 	cli();
-	TIMSK |= (1 << TOIE0);    // Timer0 ©ю╧Жгц╥н юнем╥╢ф╝ ©║юл╨М
+	TIMSK |= (1 << TOIE0);    // Timer0 Л≤╓К╡└М■▄К║° Л²╦М└╟К÷╫М┼╦ Л≈░Л²╢К╦■
 
-// Normal, 1/1024 for га╦╝╫╨диюо
+// Normal, 1/1024 for М■└К╕╛Л┼╓Л╪─Л²╪
 	TCCR0 |= (1 << CS02);
 	TCCR0 |= (1 << CS01);
 	TCCR0 |= (1 << CS00);

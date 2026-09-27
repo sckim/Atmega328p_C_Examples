@@ -19,12 +19,12 @@
 #define PCF8574_PIN_ERROR   0x81
 #define PCF8574_I2C_ERROR   0x82
 
-// class ÀÌ¸§ ¼±¾ğ
+// class ì´ë¦„ ì„ ì–¸
 class PCF8574 {
 public:
-	//¿ÜºÎ¿¡¼­ Á¢±Ù °¡´É
-	// »ı¼ºÀÚ ¼±¾ğ
-	// ÄÄÆÄÀÏ·¯¿¡°Ô explicit´Â ÀÚµ¿ Çü º¯È¯À» ÇÏÁö ¸»µµ·Ï ÇÔ
+	//ì™¸ë¶€ì—ì„œ ì ‘ê·¼ ê°€ëŠ¥
+	// ìƒì„±ì ì„ ì–¸
+	// ì»´íŒŒì¼ëŸ¬ì—ê²Œ explicitëŠ” ìë™ í˜• ë³€í™˜ì„ í•˜ì§€ ë§ë„ë¡ í•¨
 	explicit PCF8574(const uint8_t deviceAddress);
 
 	void begin();

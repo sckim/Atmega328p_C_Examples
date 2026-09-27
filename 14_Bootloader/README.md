@@ -1,4 +1,4 @@
-﻿# 14. Bootloader
+# 14. Bootloader
 
 ## 🎯 학습 목표
 *   부트로더의 역할과 BOOTSZ / BOOTRST 퓨즈의 의미를 이해한다.

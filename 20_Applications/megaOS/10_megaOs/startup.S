@@ -45,4 +45,4 @@ _do_clear_bss:
     call    main
 
 
-ÃâÃ³: http://embed-avr.tistory.com/92 [AVR·Î ½ÃÀÛÇÏ´Â ÀÓº£µğµå]
+ì¶œì²˜: http://embed-avr.tistory.com/92 [AVRë¡œ ì‹œì‘í•˜ëŠ” ì„ë² ë””ë“œ]
