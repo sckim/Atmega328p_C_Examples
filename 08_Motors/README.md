@@ -8,12 +8,6 @@
 ## 🛠 주요 부품
 *   28BYJ-48 + ULN2003, SG90 RC 서보, DC 모터 + L298N/TB6612 드라이버, 별도 전원
 
-## 📂 예제
-| 폴더 | 내용 |
-|---|---|
-| `810_Motor_Stepper` | 스테핑 모터 상 여자와 속도 제어 |
-| `811_Motor_RC` | RC 서보 각도 제어 |
-| `812_Motor_DCM` | DC 모터 정역 회전과 속도 제어 |
 
 ## 📌 참고
 *   모터 전원은 MCU 전원과 분리하고 GND만 공통으로 묶는다. 같은 레귤레이터를 쓰면 돌입 전류로 MCU가 리셋된다.
@@ -22,15 +16,14 @@
 ---
 
 <!-- AUTO-INDEX:BEGIN -->
+<!-- gen_index.py가 만든다. 손으로 고치지 마세요. 기준일 2026-09-27 -->
 
-## 🗂 폴더 현황 (자동 생성)
+### 📂 예제 (3개)
 
-기준일 2026-09-20. 예제 폴더 3개, 회로도 보유 3개, `Project Backups` 백업본 2개.
-
-| 폴더 | 소스 | Proteus 회로도 |
-|---|---|---|
-| `810_Motor_Stepper` | 2개 파일 | `AVR328P_Basic.pdsprj` |
-| `811_Motor_RC` | 10개 파일 | `AVR328P_Basic_RC.pdsprj`; `AVR328P_RCServo.pdsprj`; `AVR328P_UART.pdsprj` (백업 2) |
-| `812_Motor_DCM` | 2개 파일 | `AVR328P_Basic_DCM.pdsprj`; `AVR328P_DCM.pdsprj` |
+| 폴더 | 내용 | 소스 | 줄 | PlatformIO | 회로도 | Wokwi | README |
+|---|---|---:|---:|:---:|:---:|:---:|:---:|
+| `10_Servo1` | Library를 이용한 시리얼 통신 | 6 | 1728 | ✓ | ✓ |  |  |
+| `20_DC_Motor` | (percentage < 0 ? 0 : percentage)); | 2 | 146 | ✓ | ✓ |  |  |
+| `30_Stepper_motor` | 2019. 11. 15. | 2 | 198 | ✓ | ✓ |  |  |
 
 <!-- AUTO-INDEX:END -->

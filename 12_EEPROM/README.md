@@ -13,12 +13,6 @@ uint16_t v = eeprom_read_word(&cal);
 eeprom_update_word(&cal, v + 1);    // 값이 같으면 쓰지 않는다
 ```
 
-## 📂 예제
-| 폴더 | 내용 |
-|---|---|
-| `201_eeprom`, `eeprom` | EEPROM 읽기/쓰기 기본형 |
-| `200_Menu_start` | UART 기반 설정 메뉴 골격 |
-| `210_Menu_eeprom` | 메뉴에서 바꾼 값을 EEPROM에 보존 |
 
 ## 📌 참고
 *   EEPROM 수명은 셀당 약 100,000회이다. 반드시 `eeprom_write_*` 대신 `eeprom_update_*`를 써서 불필요한 쓰기를 피한다.
@@ -28,16 +22,16 @@ eeprom_update_word(&cal, v + 1);    // 값이 같으면 쓰지 않는다
 ---
 
 <!-- AUTO-INDEX:BEGIN -->
+<!-- gen_index.py가 만든다. 손으로 고치지 마세요. 기준일 2026-09-27 -->
 
-## 🗂 폴더 현황 (자동 생성)
+### 📂 예제 (5개)
 
-기준일 2026-09-20. 예제 폴더 4개, 회로도 보유 4개.
-
-| 폴더 | 소스 | Proteus 회로도 |
-|---|---|---|
-| `200_Menu_start` | 6개 파일 | `AVR328P_LCD_7Seg_Terminal.DSN` |
-| `201_eeprom` | 6개 파일 | `AVR328P_LCD.pdsprj` |
-| `210_Menu_eeprom` | 5개 파일 | `AVR328P_LCD_7Seg_Terminal.DSN`; `AVR328P_LCD_7Seg_Terminal.pdsprj` |
-| `eeprom` | 3개 파일 | `AVR328P_LCD.pdsprj` |
+| 폴더 | 내용 | 소스 | 줄 | PlatformIO | 회로도 | Wokwi | README |
+|---|---|---:|---:|:---:|:---:|:---:|:---:|
+| `10_EEPROM` | Library를 이용한 시리얼 통신 | 4 | 1404 | ✓ | ✓ |  |  |
+| `20_eeprom_write` | 내장 EEPROM 을 EEAR / EEDR / EECR 레지스터로 직접 쓰고 읽는다 | 1 | 76 | ✓ |  |  |  |
+| `30_eeprom_24c02` | 외부 I2C EEPROM(24C02, 256바이트)에 쓰고 읽기 | 1 | 134 | ✓ |  |  |  |
+| `40_Menu_start` | 2017. 10. 18. | 4 | 234 |  | ✓ |  |  |
+| `42_Menu_eeprom` | 2017. 10. 18. | 3 | 216 |  | ✓ |  |  |
 
 <!-- AUTO-INDEX:END -->

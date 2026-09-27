@@ -15,16 +15,6 @@
 | `PORTx` | 출력값. 입력 모드에서는 1을 쓰면 내부 풀업이 켜진다 |
 | `PINx` | 핀의 실제 논리 상태를 읽는다. 1을 쓰면 해당 비트가 토글된다 |
 
-## 📂 예제
-| 폴더 | 내용 |
-|---|---|
-| `010_Blink`, `0_Blink`, `10_Blink`, `13_Blink`, `Blink*` | 출력 제어 기본형 |
-| `002_asmBlink`, `005_asmBlink`, `asmBlink` | 어셈블리로 작성한 최소 제어 |
-| `assembler_Exam1` | 어셈블리 명령어 실습 |
-| `020_Input_LED`, `20~22_Input*` | 버튼 입력과 풀업 저항 |
-| `23_Input_UpDown`, `24_Input_Toggle` | 에지 검출과 토글 동작 |
-| `GPIORead` | 핀 상태 읽기 |
-| `012_Blink_Arduino`, `912_Blink_Arduino`, `Arduino 328P` | 아두이노 스타일 구현과의 대조 |
 
 ## 📌 참고
 *   버튼은 기계적 바운스를 동반한다. 수 ms 지연 또는 다수결 샘플링으로 디바운스를 처리한다.
@@ -34,34 +24,24 @@
 ---
 
 <!-- AUTO-INDEX:BEGIN -->
+<!-- gen_index.py가 만든다. 손으로 고치지 마세요. 기준일 2026-09-27 -->
 
-## 🗂 폴더 현황 (자동 생성)
+### 📂 예제 (13개)
 
-기준일 2026-09-20. 예제 폴더 22개, 회로도 보유 13개.
-
-| 폴더 | 소스 | Proteus 회로도 |
-|---|---|---|
-| `002_asmBlink` | 2개 파일 | — |
-| `005_asmBlink` | 1개 파일 | — |
-| `010_Blink` | 6개 파일 | `AVR328P_Basic.pdsprj`; `AVR328P_LCD_7Seg_Terminal.DSN`; `AVR328P_Testboard.pdsprj` |
-| `012_Blink_Arduino` | 16개 파일 | `AVR328P_Basic.pdsprj` |
-| `020_Input_LED` | 1개 파일 | `AVR328P_Key_7Seg.DSN` |
-| `0_Blink` | 1개 파일 | `Arduino 328.pdsprj` |
-| `10_Blink` | 1개 파일 | `AVR128_LED_7Seg.DSN` |
-| `13_Blink` | 1개 파일 | — |
-| `20_Input_LED` | 1개 파일 | `Input.DSN` |
-| `21_Input_LED` | 1개 파일 | `Input.DSN` |
-| `22_Inputs_LED` | 1개 파일 | `Input.DSN` |
-| `23_Input_UpDown` | 1개 파일 | `Input.DSN`; `Input4.DSN` |
-| `24_Input_Toggle` | 1개 파일 | `Input.DSN` |
-| `912_Blink_Arduino` | 8개 파일 | `AVR328P_LCD_7Seg_Terminal.DSN` |
-| `Arduino 328P` | 1개 파일 | — |
-| `Blink` | 1개 파일 | `AVR328P_Basic.pdsprj` |
-| `Blink2` | 1개 파일 | `AVR328P_Basic.pdsprj` |
-| `Blink3` | 1개 파일 | — |
-| `Blink9` | 1개 파일 | — |
-| `GPIORead` | 1개 파일 | — |
-| `asmBlink` | 1개 파일 | — |
-| `assembler_Exam1` | 1개 파일 | — |
+| 폴더 | 내용 | 소스 | 줄 | PlatformIO | 회로도 | Wokwi | README |
+|---|---|---:|---:|:---:|:---:|:---:|:---:|
+| `10_Blink` | 온보드 LED(PB5, 아두이노 13번 핀)를 1초 간격으로 깜빡인다 | 1 | 17 | ✓ | ✓ |  |  |
+| `12_Blink_Pattern` | 2017-08-07 오후 5:12:02 | 6 | 134 | ✓ | ✓ |  |  |
+| `14_Blink_Arduino_Style` | 2017. 10. 27. | 8 | 838 | ✓ | ✓ |  |  |
+| `16_Blink13` | 2017. 3. 22. | 1 | 73 |  |  |  |  |
+| `18_Blink_Full` |  | 1 | 182 |  | ✓ |  |  |
+| `20_Button` | Understand GPIO registers | 1 | 26 |  | ✓ |  |  |
+| `22_Input_UpDown` |  | 1 | 29 |  | ✓ |  |  |
+| `24_Input_Toggle` |  | 1 | 38 |  | ✓ |  |  |
+| `30_LED_bar` | 가변저항(ADC0) 값을 LED 8개의 막대 그래프로 표시 | 1 | 63 | ✓ |  |  |  |
+| `60_Asm_Blink` |  | 0 | 0 |  |  |  |  |
+| `62_Asm_Blink2` | 2021-10-02 오후 1:36:30 | 1 | 18 |  |  |  |  |
+| `64_Asm_Exam` |  | 0 | 0 |  |  |  |  |
+| `70_GPIO_OOP` | 2019. 7. 2. | 2 | 142 |  | ✓ |  |  |
 
 <!-- AUTO-INDEX:END -->

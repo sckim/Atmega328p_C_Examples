@@ -15,14 +15,6 @@
 | `ADCSRA` | `ADEN` 허용, `ADSC` 변환 시작, `ADIF` 완료 플래그, `ADPS2:0` 프리스케일러 |
 | `ADCL` / `ADCH` | 변환 결과. 반드시 `ADCL`을 먼저 읽는다 (`ADC` 매크로 사용 권장) |
 
-## 📂 예제
-| 폴더 | 내용 |
-|---|---|
-| `050_ADC` | ADC 설정과 단발 변환 |
-| `100_ADC_hold` | 변환 완료 대기 및 결과 보관 |
-| `108_ADC_serial` | 측정값을 UART로 출력 |
-| `102_ADC_on_LCD` | 측정값을 텍스트 LCD에 표시 |
-| `105_ADC_KeyIn_on_LCD` | 키 입력과 ADC 측정을 함께 처리 |
 
 ## 📌 참고
 *   ADC 클록은 50~200 kHz 범위여야 10비트 정밀도가 보장된다. 16 MHz에서는 프리스케일러 128(125 kHz)을 쓴다.
@@ -32,17 +24,17 @@
 ---
 
 <!-- AUTO-INDEX:BEGIN -->
+<!-- gen_index.py가 만든다. 손으로 고치지 마세요. 기준일 2026-09-27 -->
 
-## 🗂 폴더 현황 (자동 생성)
+### 📂 예제 (6개)
 
-기준일 2026-09-20. 예제 폴더 5개, 회로도 보유 5개.
-
-| 폴더 | 소스 | Proteus 회로도 |
-|---|---|---|
-| `050_ADC` | 1개 파일 | `AVR328P_Basic_7seg_ADC_Ext.pdsprj` |
-| `100_ADC_hold` | 1개 파일 | `AVR328P_I2C_Terminal.DSN` |
-| `102_ADC_on_LCD` | 3개 파일 | `ADC.DSN` |
-| `105_ADC_KeyIn_on_LCD` | 3개 파일 | `ADC_KeyIn_on_LCD.DSN` |
-| `108_ADC_serial` | 1개 파일 | `AVR328P_I2C_Terminal.DSN` |
+| 폴더 | 내용 | 소스 | 줄 | PlatformIO | 회로도 | Wokwi | README |
+|---|---|---:|---:|:---:|:---:|:---:|:---:|
+| `10_AnalogReadSerial` | 2016. 5. 25. | 1 | 87 |  | ✓ |  |  |
+| `12_ADC_Basic` |  | 1 | 82 | ✓ | ✓ |  |  |
+| `14_ADC_hold` | 2016. 5. 25. | 1 | 35 |  | ✓ |  |  |
+| `20_ADC_multi` | ADC0 ~ ADC5 여섯 채널을 차례로 읽어 전압으로 출력 | 1 | 55 | ✓ |  |  |  |
+| `30_ADC_Int` | Timer0 비교 일치로 ADC 변환을 자동 시작하고, 변환 완료 인터럽트로 값을 받는다 | 1 | 70 | ✓ |  |  |  |
+| `40_ADC_on_LCD` | 2016. 5. 5. | 2 | 313 |  | ✓ |  |  |
 
 <!-- AUTO-INDEX:END -->

@@ -14,16 +14,6 @@
 | `UCSR0C` | 프레임 형식 — 데이터 비트 수, 패리티, 정지 비트 |
 | `UDR0` | 데이터 레지스터. 읽으면 수신, 쓰면 송신 |
 
-## 📂 예제
-| 폴더 | 내용 |
-|---|---|
-| `060_UART`, `90_UART_start`, `91_USART`, `92_UART` | 레지스터 설정과 1바이트 송수신 |
-| `91_UART_print` | 문자열 송신 |
-| `062_UART_printf`, `065_LIbUART_printf` | `fdevopen` / `FILE` 구조체로 `printf` 연결 |
-| `064_LibUART`, `UART_Lib` | 재사용 가능한 UART 라이브러리 모듈 |
-| `SerialComm`, `SerialTest` | 통신 시험 |
-| `SetRC_UART` | UART 명령으로 RC 서보 각도 설정 |
-| `RS232` | TTL ↔ RS-232 레벨 변환 |
 
 ## 📌 참고
 *   16 MHz에서 9600 bps의 오차는 0.2 %로 안전하지만, 115200 bps는 2.1 %에 달한다. 고속에서는 `U2X0` 비트를 켜거나 14.7456 MHz 크리스털을 쓴다.
@@ -32,26 +22,24 @@
 ---
 
 <!-- AUTO-INDEX:BEGIN -->
+<!-- gen_index.py가 만든다. 손으로 고치지 마세요. 기준일 2026-09-27 -->
 
-## 🗂 폴더 현황 (자동 생성)
+### 📂 예제 (13개)
 
-기준일 2026-09-20. 예제 폴더 14개, 회로도 보유 12개.
-
-| 폴더 | 소스 | Proteus 회로도 |
-|---|---|---|
-| `060_UART` | 3개 파일 | `AVR328P_UART.pdsprj`; `Arduino 328.pdsprj` |
-| `062_UART_printf` | 1개 파일 | `AVR328P_UART.pdsprj` |
-| `063_UART_myLib` | 3개 파일 | `AVR328P_LCD_7Seg_Terminal.pdsprj` |
-| `064_LibUART` | 6개 파일 | `AVR328P_UART.pdsprj` |
-| `065_LIbUART_printf` | 3개 파일 | `AVR328P_UART.pdsprj` |
-| `90_UART_start` | 1개 파일 | `AVR328P_Serial_Terminal.DSN` |
-| `91_UART_print` | 2개 파일 | `AVR128_LCD_7Seg_Terminal.pdsprj`; `AVR328P_LCD_7Seg_Terminal.DSN`; `AVR328P_LCD_7Seg_Terminal.pdsprj` |
-| `91_USART` | 2개 파일 | — |
-| `92_UART` | 3개 파일 | — |
-| `RS232` | 3개 파일 | `AVR328P_LCD.pdsprj` |
-| `SerialComm` | 4개 파일 | `AVR328P_UART.pdsprj` |
-| `SerialTest` | 3개 파일 | `Arduino 328.pdsprj` |
-| `SetRC_UART` | 5개 파일 | `AVR328P_UART.pdsprj` |
-| `UART_Lib` | 3개 파일 | `AVR328P_UART.pdsprj` |
+| 폴더 | 내용 | 소스 | 줄 | PlatformIO | 회로도 | Wokwi | README |
+|---|---|---:|---:|:---:|:---:|:---:|:---:|
+| `10_Serial` | 데이터를 받을 때까지 대기 | 1 | 40 |  | ✓ |  |  |
+| `20_Print` | 2019. 5. 28. | 1 | 76 |  | ✓ |  |  |
+| `22_UART` | UCSRnA 레지스터를 초기화시킨다. | 2 | 81 |  |  |  |  |
+| `24_USART` |  | 1 | 126 |  |  |  |  |
+| `26_UART_print` | 전송준비가 될 때까지 대기 | 2 | 161 |  | ✓ |  |  |
+| `30_UART_Reg` | 2019. 5. 28. | 3 | 232 | ✓ | ✓ |  |  |
+| `34_Serial_Input` | 컴퓨터가 보낸 명령을 UART 로 받아서 반응한다 (폴링 방식) | 1 | 83 | ✓ |  |  |  |
+| `38_SerialEvent` | 수신 인터럽트(RXC)로 한 줄을 받아 처리한다 | 1 | 60 | ✓ |  |  |  |
+| `40_UART_myLib` | UCSRnA 레지스터를 초기화시킨다. | 2 | 287 |  | ✓ |  |  |
+| `42_LibUART` | Library를 이용한 시리얼 통신 | 4 | 1356 | ✓ | ✓ |  |  |
+| `44_LibUART_printf` | Library를 이용한 시리얼 통신 | 2 | 688 |  | ✓ |  |  |
+| `50_Comm_UART` | Library를 이용한 시리얼 통신 | 3 | 742 |  | ✓ |  |  |
+| `52_SerialTest` | 'lcd_lib.c' | 2 | 362 |  | ✓ |  |  |
 
 <!-- AUTO-INDEX:END -->

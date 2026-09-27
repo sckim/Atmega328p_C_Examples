@@ -15,14 +15,6 @@
 | `SPSR` | `SPIF` 전송 완료 플래그, `SPI2X` 배속 |
 | `SPDR` | 송수신 데이터. 쓰면 전송이 시작되고, 동시에 수신값이 들어온다 |
 
-## 📂 예제
-| 폴더 | 내용 |
-|---|---|
-| `110_SPI` | SPI 마스터 설정과 1바이트 전송 |
-| `110_SPI_MAX7219`, `110_SPI_MAX7219_v2` | 하드웨어 SPI로 도트 매트릭스 구동 |
-| `115_SPI_Software_MAX7219` | 비트뱅잉 SPI 구현 |
-| `110_SPI_MCP41xx` | 디지털 가변저항 제어 |
-| `105_SerialShift_595` | 74LS595를 SPI로 구동 |
 
 ## 📌 참고
 *   마스터로 쓸 때도 `SS`(PB2) 핀은 출력으로 설정해야 한다. 입력으로 두면 Low가 들어올 때 슬레이브 모드로 전환되어 버린다.
@@ -31,19 +23,18 @@
 ---
 
 <!-- AUTO-INDEX:BEGIN -->
+<!-- gen_index.py가 만든다. 손으로 고치지 마세요. 기준일 2026-09-27 -->
 
-## 🗂 폴더 현황 (자동 생성)
+### 📂 예제 (7개)
 
-기준일 2026-09-20. 예제 폴더 7개, 회로도 보유 6개, `Project Backups` 백업본 7개.
-
-| 폴더 | 소스 | Proteus 회로도 |
-|---|---|---|
-| `018_74LS595_oop` | 3개 파일 | `AVR328P_74LS595.pdsprj` |
-| `105_SerialShift_595` | 1개 파일 | `Arduino 328_74595.pdsprj` |
-| `110_SPI` | 2개 파일 | — |
-| `110_SPI_MAX7219` | 4개 파일 | `AVR328P_MAX7219.pdsprj` (백업 7) |
-| `110_SPI_MAX7219_v2` | 2개 파일 | `AVR328P_MAX7219.pdsprj` |
-| `110_SPI_MCP41xx` | 4개 파일 | `AVR328P_MCP410x.pdsprj` |
-| `115_SPI_Software_MAX7219` | 4개 파일 | `AVR328P_MAX7219.pdsprj` |
+| 폴더 | 내용 | 소스 | 줄 | PlatformIO | 회로도 | Wokwi | README |
+|---|---|---:|---:|:---:|:---:|:---:|:---:|
+| `10_Comm_SPI` |  | 1 | 49 |  |  |  |  |
+| `20_SerialShift_595` | 시프트 레지스터 74HC595 로 출력 핀 8개를 3개로 늘린다 | 1 | 38 | ✓ | ✓ |  |  |
+| `22_74LS595_oop` | 2019. 7. 22. | 2 | 69 |  | ✓ |  |  |
+| `30_MAX7219` |  | 2 | 218 | ✓ | ✓ |  |  |
+| `32_MAX7219_Software` |  | 2 | 280 |  | ✓ |  |  |
+| `40_DigitalPot` | Interrupt UART library with receive/transmit circula | 2 | 724 |  | ✓ |  |  |
+| `50_MCP3208` | 12비트 8채널 SPI ADC 를 하드웨어 SPI 로 읽는다 | 1 | 67 | ✓ |  |  |  |
 
 <!-- AUTO-INDEX:END -->

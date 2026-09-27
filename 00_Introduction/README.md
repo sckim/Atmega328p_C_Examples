@@ -13,15 +13,6 @@ PORTB ^=  (1 << PB5);   // 비트 토글
 if (PINB & (1 << PB0))  // 비트 검사
 ```
 
-## 📂 예제
-| 폴더 | 내용 |
-|---|---|
-| `001_Template` | 새 프로젝트의 출발점이 되는 최소 골격 |
-| `05_main` | `main()` 구조와 무한 루프 기본형 |
-| `How_to_run_uC`, `1How_to_run_uC`, `2How_to_run_uC` | 빌드·업로드 절차 단계별 확인 |
-| `30_BitTwidding` | 비트 마스크 연산 실습 |
-| `Check_databss` | `.data` / `.bss` 섹션에 변수가 배치되는 모습 확인 |
-| `Demo1`, `GccApplication1` | IDE가 생성한 기본 프로젝트 |
 
 ## 📌 참고
 *   `F_CPU`는 실제 클록(기본 16 MHz, 내부 RC 사용 시 8 MHz 또는 1 MHz)과 반드시 일치시켜야 한다. 불일치하면 `_delay_ms()`와 UART 보율이 모두 어긋난다.
@@ -29,22 +20,22 @@ if (PINB & (1 << PB0))  // 비트 검사
 ---
 
 <!-- AUTO-INDEX:BEGIN -->
+<!-- gen_index.py가 만든다. 손으로 고치지 마세요. 기준일 2026-09-27 -->
 
-## 🗂 폴더 현황 (자동 생성)
+### 📂 예제 (11개)
 
-기준일 2026-09-20. 예제 폴더 10개, 회로도 보유 2개.
-
-| 폴더 | 소스 | Proteus 회로도 |
-|---|---|---|
-| `001_Template` | 1개 파일 | — |
-| `05_main` | 1개 파일 | — |
-| `1How_to_run_uC` | 1개 파일 | — |
-| `2How_to_run_uC` | 1개 파일 | — |
-| `30_BitTwidding` | 1개 파일 | `LEDUpDown.DSN` |
-| `Check_databss` | 1개 파일 | — |
-| `Demo1` | 1개 파일 | — |
-| `GccApplication1` | 1개 파일 | — |
-| `How_to_run_uC` | 1개 파일 | — |
-| `InitialValues` | 1개 파일 | `Atmega128 Temp.DSN` |
+| 폴더 | 내용 | 소스 | 줄 | PlatformIO | 회로도 | Wokwi | README |
+|---|---|---:|---:|:---:|:---:|:---:|:---:|
+| `10_Template` | 새 AVR C 프로젝트의 출발점 | 1 | 12 | ✓ |  |  |  |
+| `20_How_to_Run` | 2020-05-01 오전 10:18:01 | 1 | 16 |  |  |  |  |
+| `30_First_Program` | INT0(PD2), INT1(PD3)를 활성화 | 1 | 22 |  |  |  |  |
+| `50_Bit_Twiddling` |  | 1 | 30 |  | ✓ |  |  |
+| `60_Data_BSS` | 2020-04-14 오후 10:26:28 | 1 | 26 |  |  |  |  |
+| `70_Data_Types` | 기본 자료형의 크기와 표현 범위, 오버플로우 | 1 | 56 | ✓ |  |  |  |
+| `72_Operators` | 산술·비교·논리 연산자와 비트 연산자 | 1 | 65 | ✓ |  |  |  |
+| `74_Control_Flow` | if/else, for, while, do-while, switch | 1 | 79 | ✓ |  |  |  |
+| `76_Functions` | 함수(매개변수, 반환값)와 매크로(#define)의 차이 | 1 | 70 | ✓ |  |  |  |
+| `78_Arrays_Pointers` | 배열과 포인터의 기초, 그리고 "레지스터는 주소다" | 1 | 67 | ✓ |  |  |  |
+| `80_String` | C 문자열은 "널('\0')로 끝나는 char 배열"이다 | 1 | 63 | ✓ |  |  |  |
 
 <!-- AUTO-INDEX:END -->

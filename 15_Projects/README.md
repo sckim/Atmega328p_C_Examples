@@ -5,17 +5,6 @@
 *   드라이버 계층과 응용 계층을 분리하여 유지보수 가능한 구조를 설계한다.
 *   C++ 클래스로 주변장치를 추상화했을 때의 이점과 비용(코드 크기, RAM)을 확인한다.
 
-## 📂 예제
-| 폴더 | 내용 |
-|---|---|
-| `777_Allfunction` | 전 주변장치를 묶은 종합 예제 (C) |
-| `777_AllFunctions_OOP`, `777_AllFunctions_OOP_v2` | 같은 기능의 C++ 객체 지향 구현 |
-| `GPIO_oop` | GPIO를 클래스로 추상화 (`01_Digital_IO/012_Blink_oop`과 동일하여 이쪽만 남겼다) |
-| `Modules` | 기능별 드라이버 모듈 모음 |
-| `Sensors` | 센서 인터페이스 계층 (ADXL345 + ITG-3200) |
-| `MainPro328F_v6` | 보드 통합 펌웨어 본체 |
-| `200_Menu_start` | UART 메뉴 기반 사용자 인터페이스 |
-| `ArduinoSketch1` | 아두이노 코어를 라이브러리로 링크한 혼합 구성 |
 
 ## 📌 참고
 *   ATmega328P의 RAM은 2 KB뿐이다. C++ 가상 함수와 동적 할당은 신중하게 쓴다.
@@ -25,21 +14,20 @@
 ---
 
 <!-- AUTO-INDEX:BEGIN -->
+<!-- gen_index.py가 만든다. 손으로 고치지 마세요. 기준일 2026-09-27 -->
 
-## 🗂 폴더 현황 (자동 생성)
+### 📂 예제 (9개)
 
-기준일 2026-09-20. 예제 폴더 9개, 회로도 보유 6개.
-
-| 폴더 | 소스 | Proteus 회로도 |
-|---|---|---|
-| `200_Menu_start` | 6개 파일 | `AVR328P_LCD_7Seg_Terminal.DSN`; `AVR328P_LCD_7Seg_Terminal.pdsprj` |
-| `777_AllFunctions_OOP` | 16개 파일 | `AVR328P_Basic.pdsprj` |
-| `777_AllFunctions_OOP_v2` | 14개 파일 | `AVR328P_Basic.pdsprj` |
-| `777_Allfunction` | 12개 파일 | `AVR328P_Basic.pdsprj` |
-| `ArduinoSketch1` | 2개 파일 | — |
-| `GPIO_oop` | 4개 파일 | `AVR328P_Basic.pdsprj` |
-| `MainPro328F_v6` | 12개 파일 | — |
-| `Modules` | 7개 파일 | `4 digits FND Unit.pdsprj`; `7 Segment Unit.pdsprj`; `4 digits FND Unit.DSN` |
-| `Sensors` | 12개 파일 | — |
+| 폴더 | 내용 | 소스 | 줄 | PlatformIO | 회로도 | Wokwi | README |
+|---|---|---:|---:|:---:|:---:|:---:|:---:|
+| `10_Menu_start` | 2019. 6. 16. | 4 | 136 |  | ✓ |  |  |
+| `20_Sensors` | SDO pin must be tied high for address 0x1D or low fo | 6 | 494 |  |  |  |  |
+| `30_MainPro328F` |  | 5 | 648 |  |  |  |  |
+| `40_Modules` |  | 6 | 317 |  | ✓ |  |  |
+| `50_AllFunctions` | 2019. 7. 5. | 6 | 1189 |  | ✓ |  |  |
+| `60_AllFunctions_OOP` | 2019. 7. 5. | 7 | 1362 |  | ✓ |  |  |
+| `70_ArduinoSketch1` | 2019-12-12 오후 4:33:29 | 26 | 4312 |  |  |  |  |
+| `80_IMU_9DOF` | 57600bps | 1 | 833 |  |  |  |  |
+| `82_IMU_9DOF_V21` | 57600bps | 1 | 913 |  |  |  |  |
 
 <!-- AUTO-INDEX:END -->

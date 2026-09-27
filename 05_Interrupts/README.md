@@ -13,14 +13,6 @@
 | `PCICR`, `PCMSK0:2` | 핀 변화 인터럽트 그룹 및 핀별 허용 |
 | `SREG` 의 `I` 비트 | 전역 인터럽트 허용 — `sei()` / `cli()` |
 
-## 📂 예제
-| 폴더 | 내용 |
-|---|---|
-| `027_Interrupt`, `27_Interrupt`, `28_Interrupt` | 외부 인터럽트 기본형 |
-| `028_PCInterrupt`, `028_PC_Interrupt`, `29_Interrupts` | 핀 변화 인터럽트 |
-| `041_Timer0Overflow_Int` | 타이머 오버플로 인터럽트 |
-| `043_Timer0CTC_Int`, `043_Timer0_CTC_int` | CTC 비교 일치 인터럽트 |
-| `044_Timer0Overflow_Int_module` | ISR과 응용 로직의 모듈 분리 |
 
 ## 📌 참고
 *   ISR 안에서는 `_delay_ms()`나 `printf`를 쓰지 않는다.
@@ -30,22 +22,20 @@
 ---
 
 <!-- AUTO-INDEX:BEGIN -->
+<!-- gen_index.py가 만든다. 손으로 고치지 마세요. 기준일 2026-09-27 -->
 
-## 🗂 폴더 현황 (자동 생성)
+### 📂 예제 (9개)
 
-기준일 2026-09-20. 예제 폴더 10개, 회로도 보유 10개.
-
-| 폴더 | 소스 | Proteus 회로도 |
-|---|---|---|
-| `027_Interrupt` | 3개 파일 | `AVR328P_7Seg_decoder.DSN`; `AVR328P_7Seg_decoder_SC.DSN`; `AVR328P_Testboard_7seg_buttons.pdsprj` |
-| `028_PCInterrupt` | 1개 파일 | `AVR328P_Key_7Seg.DSN`; `Arduino 328.pdsprj` |
-| `028_PC_Interrupt` | 2개 파일 | `AVR328P_Key_7Seg.DSN`; `AVR328P_Testboard.pdsprj` |
-| `041_Timer0Overflow_Int` | 3개 파일 | `AVR328P_Basic_7segD_Ext.pdsprj`; `AVR328P_Key_7Seg.DSN`; `AVR328P_two_7Seg.pdsprj` |
-| `043_Timer0CTC_Int` | 2개 파일 | `AVR328P_7Seg.pdsprj`; `AVR328P_Key_7Seg.DSN`; `AVR328P_Key_7Seg.pdsprj` |
-| `043_Timer0_CTC_int` | 1개 파일 | `AVR328P_Key_7Seg.DSN`; `AVR328P_two_7Seg.pdsprj` |
-| `044_Timer0Overflow_Int_module` | 1개 파일 | `AVR328P_Basic.pdsprj` |
-| `27_Interrupt` | 1개 파일 | `Interrupt.DSN` |
-| `28_Interrupt` | 1개 파일 | `Interrupt.DSN` |
-| `29_Interrupts` | 1개 파일 | `Interrupts.DSN` |
+| 폴더 | 내용 | 소스 | 줄 | PlatformIO | 회로도 | Wokwi | README |
+|---|---|---:|---:|:---:|:---:|:---:|:---:|
+| `10_Volatile` | ISR 과 main 이 함께 쓰는 변수에는 volatile 이 필요하다 | 1 | 31 | ✓ |  |  |  |
+| `20_External_Interrupt` | 외부 인터럽트를 이용한 7 segment 값 변경 | 3 | 77 | ✓ | ✓ |  |  |
+| `22_External_Interrupt2` | 인터텁트 0와 1을 사용 | 1 | 36 |  | ✓ |  |  |
+| `30_PCInterrupt` |  | 1 | 45 | ✓ | ✓ |  |  |
+| `32_PCInterrupt2` | 외부 인터럽트를 이용한 7 segment 값 변경 | 2 | 63 |  | ✓ |  |  |
+| `40_Timer0_CTC_Int` | Timer0을 이용하여 1초마다 overflow | 2 | 84 | ✓ | ✓ |  |  |
+| `42_Timer0_CTC_Int2` |  | 1 | 40 |  | ✓ |  |  |
+| `50_Timer0_Overflow_Int` | Timer0을 이용하여 1초마다 overflow | 3 | 190 | ✓ | ✓ |  |  |
+| `52_Timer0_Overflow_Int_module` | TCNT0가 0이면 16.384ms 마다 overflow 발생 | 1 | 76 | ✓ | ✓ |  |  |
 
 <!-- AUTO-INDEX:END -->
