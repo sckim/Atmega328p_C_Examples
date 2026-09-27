@@ -39,7 +39,7 @@ Phase-correct : f = F_CPU / (2 × 프리스케일 × TOP)
 *   RC 서보는 20 ms 주기에 1~2 ms 펄스폭이 필요하다. Timer1 + `ICR1`로 `TOP`을 잡는 방식이 정확하다.
 *   DC 모터 구동에는 드라이버 IC(L298N, TB6612 등)가 필요하다. MCU 핀을 직접 연결하지 않는다.
 *   `080_PWM_bitbang_v2`, `081_PWM_Timer0Interrupt2`, `81_PWM`, `82_PWM`은 `04_ADC`에 있던 것을 이 폴더로 옮겼다.
-*   `081_PWM_Timer0Interrupt`은 `05_Interrupts/044_Timer0Overflow_Int_module`과 내용이 같아 `_to_delete`로 옮겼다.
+*   `081_PWM_Timer0Interrupt`은 `05_Interrupts/044_Timer0Overflow_Int_module`과 내용이 같아 제거했다.
 
 ---
 

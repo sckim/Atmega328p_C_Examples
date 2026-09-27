@@ -9,7 +9,7 @@
 *   카테고리 폴더는 `00`~`15`, `20`으로 구성하며 번호는 01과 같다.
 *   예제 폴더는 `NN_이름`이다. **NN이 클수록 어렵다**(개념 진행 → 소스 규모 순). 10 단위 번호는 01과 같은 이름·같은 예제이고, 그 사이 번호(12, 14, 22 …)는 같은 주제의 변형이나 확장이다.
 *   02에만 있는 예제(어셈블리, 라이브러리 계층 등)와 01에 대응 카테고리가 없는 예제(병렬 텍스트 LCD, 센서, GLCD 등)는 `20_Applications`에 있다.
-*   `_to_delete`는 중복·교체로 판단해 격리한 폴더이다. 확인이 끝나면 통째로 삭제해도 된다.
+*   중복·교체로 판단한 예제는 2026-09-27에 제거했다. 원본은 Drive 아카이브 `99_Archive/2026_repo정리/_to_delete_20260927.zip`에 있다.
 *   `_from_SampleCodes`는 이번 정리 대상에서 제외한 옛 샘플이다.
 
 ## 🛠 개발 환경 (Development Environments)
@@ -133,14 +133,14 @@ avr-gcc -mmcu=atmega328p -DF_CPU=16000000UL -Os -std=gnu11 -Wall -Wextra -o out.
 
 ### 2026-09-19
 *   루트 및 하위 폴더 README 18개를 bare-metal 관점으로 재작성(이전에는 01의 복사본).
-*   프로젝트 165개를 소스 내용 해시로 비교해 완전히 같은 5건을 `_to_delete`로 격리.
+*   프로젝트 165개를 소스 내용 해시로 비교해 완전히 같은 5건을 격리 후 제거(2026-09-27).
 *   비어 있던 `12_OneWire`에 `600_DS18B20`(현 `20_DS18B20`)을 새로 작성.
 
 ### 2026-09-21
 *   **카테고리 정렬** : 01의 폴더명·번호에 맞추었다 (`03_UART_Communication`, `09_I2C_Communication`, `10_SPI_Communication`, `11_OneWire_Communication`, `12_EEPROM`, `13_WatchDog_Sleep`, `14_Bootloader`, `15_Projects`).
 *   **`20_Applications` 신설** : 대응 카테고리가 없는 센서·병렬 텍스트 LCD·GLCD·megaOS를 이동.
 *   **99_Archive 정리** : 중복·빌드 산출물을 삭제해 3,619개 → 약 80개로 줄였고, 이후 폴더째 삭제(직접).
-*   **예제 재정리** : 예제 173개를 난이도 순 `NN_이름`으로 개명하고 중복 46개를 정리(완전 중복 16개 삭제, 변형 30개는 `_to_delete`). 근거는 `PLAN_REORG.md`.
+*   **예제 재정리** : 예제 173개를 난이도 순 `NN_이름`으로 개명하고 중복 46개를 정리(완전 중복 16개 삭제, 변형 30개는 격리 후 2026-09-27 제거). 근거는 `PLAN_REORG.md`.
 *   **솔루션 갱신** : `uC_Examples.atsln`을 새 경로로 고치고 삭제된 프로젝트 14개를 제거(등록 30개 → 16개).
 *   **신규 예제 작성** : 01에 대응하는 예제 중 02에 없던 24개를 레지스터 기반 C로 작성하고, 아두이노 스케치가 섞여 있던 `10_Template`, `10_Blink`, `20_SerialShift_595`를 교체했다. 모두 avr-gcc로 컴파일해 경고 없음을 확인했다(실기 동작은 미검증).
 
@@ -151,7 +151,7 @@ avr-gcc -mmcu=atmega328p -DF_CPU=16000000UL -Os -std=gnu11 -Wall -Wextra -o out.
 *   **01의 `15_Projects`·`20_Applications` 확장 예제**(약 100개) 중 레지스터로 옮길 것 선별·작성.
 *   **`framework = arduino`로 남은 5개**(위 개발 환경 참고)를 bare-metal 설정으로 정리.
 *   **신규 예제용 `.cproj`** 를 만들어 Microchip Studio 솔루션에 등록(필요 시).
-*   **`_to_delete` 확인 후 삭제**, `uC_Examples.atsln.bak` 정리.
+*   ~~`_to_delete` 확인 후 삭제~~ **완료(2026-09-27)**. `uC_Examples.atsln.bak` 정리는 남아 있다.
 *   **확인 필요** : `LICENSE` 파일이 작업 트리에 없다(git 기준 삭제 상태). `00_Introduction/40_Demo`도 폴더가 없다(작성한 bare-metal 버전 포함).
 *   `_from_SampleCodes`는 이번 정리에서 제외했다.
 

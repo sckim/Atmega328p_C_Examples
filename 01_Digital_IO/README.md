@@ -29,7 +29,7 @@
 ## 📌 참고
 *   버튼은 기계적 바운스를 동반한다. 수 ms 지연 또는 다수결 샘플링으로 디바운스를 처리한다.
 *   `01_Arduino_Projects/01_Digital_IO`의 `digitalWrite()`가 내부적으로 수행하는 일이 곧 이 폴더의 코드이다.
-*   C++ 클래스로 GPIO를 감싼 예제는 `15_Projects/GPIO_oop`에 있다. 같은 내용이 이 폴더에도 `012_Blink_oop`로 중복되어 있어 `_to_delete`로 옮겼다.
+*   C++ 클래스로 GPIO를 감싼 예제는 `15_Projects/GPIO_oop`에 있다. 같은 내용이 이 폴더에도 `012_Blink_oop`로 중복되어 있어 제거했다.
 
 ---
 

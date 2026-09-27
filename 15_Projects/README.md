@@ -20,7 +20,7 @@
 ## 📌 참고
 *   ATmega328P의 RAM은 2 KB뿐이다. C++ 가상 함수와 동적 할당은 신중하게 쓴다.
 *   `-Os` 최적화와 `avr-size`로 코드·데이터 크기를 항상 확인하는 습관을 들인다.
-*   `MainPro328F`, `sensor-interface1`은 각각 `MainPro328F_v6`, `Sensors`와 바이트 단위로 같아 `_to_delete`로 옮겼다.
+*   `MainPro328F`, `sensor-interface1`은 각각 `MainPro328F_v6`, `Sensors`와 바이트 단위로 같아 제거했다.
 
 ---
 
