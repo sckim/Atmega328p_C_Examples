@@ -24,7 +24,7 @@
 ---
 
 <!-- AUTO-INDEX:BEGIN -->
-<!-- gen_index.py가 만든다. 손으로 고치지 마세요. 기준일 2026-09-27 -->
+<!-- gen_index.py가 만든다. 손으로 고치지 마세요. 기준일 2026-09-28 -->
 
 ### 📂 예제 (13개)
 
@@ -35,7 +35,7 @@
 | `14_Blink_Arduino_Style` | 2017. 10. 27. | 8 | 838 | ✓ | ✓ |  |  |
 | `16_Blink13` | 2017. 3. 22. | 1 | 73 |  |  |  |  |
 | `18_Blink_Full` |  | 1 | 182 |  | ✓ |  |  |
-| `20_Button` | Understand GPIO registers | 1 | 26 |  | ✓ |  |  |
+| `20_Button` | Understand GPIO registers | 2 | 49 | ✓ | ✓ |  |  |
 | `22_Input_UpDown` |  | 1 | 29 |  | ✓ |  |  |
 | `24_Input_Toggle` |  | 1 | 38 |  | ✓ |  |  |
 | `30_LED_bar` | 가변저항(ADC0) 값을 LED 8개의 막대 그래프로 표시 | 1 | 63 | ✓ |  |  |  |

@@ -1,0 +1,8 @@
+#!/bin/sh
+# AUTO-INDEX가 실제 폴더와 어긋나면 커밋을 막는다.
+python "D:/00_Github/02_Microcontroller/11_Atmega328P_Textbook/tools/gen_index.py" --check || {
+  echo ""
+  echo "AUTO-INDEX가 낡았습니다. 아래를 실행한 뒤 다시 커밋하세요:"
+  echo "  python D:/00_Github/02_Microcontroller/11_Atmega328P_Textbook/tools/gen_index.py"
+  exit 1
+}

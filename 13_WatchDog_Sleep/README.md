@@ -17,7 +17,7 @@
 *   `10_Watchdog_Basic`만 아직 영문 레거시이고 `platformio.ini`가 없다.
 
 <!-- AUTO-INDEX:BEGIN -->
-<!-- gen_index.py가 만든다. 손으로 고치지 마세요. 기준일 2026-09-27 -->
+<!-- gen_index.py가 만든다. 손으로 고치지 마세요. 기준일 2026-09-28 -->
 
 ### 📂 예제 (5개)
 
