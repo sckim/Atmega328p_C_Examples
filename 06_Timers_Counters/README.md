@@ -29,13 +29,14 @@ CTC 주기 = (OCRnA + 1) × 프리스케일 ÷ F_CPU
 <!-- AUTO-INDEX:BEGIN -->
 <!-- gen_index.py가 만든다. 손으로 고치지 마세요. 기준일 2026-09-28 -->
 
-### 📂 예제 (14개)
+### 📂 예제 (15개)
 
 | 폴더 | 내용 | 소스 | 줄 | PlatformIO | 회로도 | Wokwi | README |
 |---|---|---:|---:|:---:|:---:|:---:|:---:|
-| `10_Timer_Overflow` | Timer0을 이용하여 1초마다 overflow | 3 | 120 | ✓ | ✓ |  |  |
+| `10_Timer_Overflow` | Normal 모드 + 폴링으로 정확한 1초를 만든다 | 3 | 114 | ✓ | ✓ |  |  |
+| `12_Timer0_OVF_ISR` | 10_Timer_Overflow 와 같은 동작을 인터럽트로 | 1 | 32 | ✓ |  |  |  |
 | `12_Timer1_Overflow` | Timer1을 이용하여 1초마다 overflow | 1 | 46 |  | ✓ |  |  |
-| `20_Timer_CTC` |  | 2 | 74 | ✓ | ✓ |  |  |
+| `20_Timer_CTC` | CTC 모드로 8 ms 를 만들고, 비교 일치를 핀으로 직접 내보낸다 | 2 | 76 | ✓ | ✓ |  |  |
 | `22_Timer0_CTC2` |  | 1 | 39 |  | ✓ |  |  |
 | `24_Timer1_OCR` | 1초마다 overflow interrupt를 이용하여 | 1 | 47 |  | ✓ |  |  |
 | `26_Timer1_Compare` | 4장_예제4-2(c) | 1 | 27 |  | ✓ |  |  |

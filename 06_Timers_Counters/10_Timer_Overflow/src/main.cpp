@@ -1,58 +1,64 @@
-/*************************************
- * Purpose: Timer0을 이용하여 1초마다 overflow
- * interrupt에 의한 LED Shift
- *
- * TCCR0A
- * TCCR0B
- * TCNT0
- *************************************/
-
+/*=======================================================*/
+// Timer_Overflow : Normal 모드 + 폴링으로 정확한 1초를 만든다
+//
+// 교재 16장 실습 16-1.  원천: 13주차B §5, 14주차A §2, 14주차B §1
+// 검증 : PIO 6.2.0 / avr-gcc 7.3.0
+//        PB5 가 8 ms 마다 토글, 7세그먼트가 1 초마다 0~9
+//
+// 시간 계산 (16 MHz, 1024 분주)
+//   한 클럭      1 / 16 MHz          = 62.5 ns
+//   한 카운트    1024 / 16 MHz       = 64 us
+//   한 오버플로  64 us x 125 카운트  = 8 ms    <- TCNT0 = 256 - 125 = 131
+//   1 초         8 ms x 125 회       = 1 s
+//
+// 8비트 타이머는 최대 64 us x 256 = 약 16.4 ms 밖에 못 센다.
+// 그래서 1 초는 한 번에 못 만들고 오버플로를 세어서 만든다.
+//
+// 오버플로마다 TCNT0 에 초기값을 다시 넣어야 한다.
+// 넣지 않으면 다음 주기는 0 부터 256 칸을 세어 16.4 ms 가 된다.
+//
+// TOV0 (TIFR0) 는 0xFF -> 0x00 에서 하드웨어가 1 로 세운다.
+// 폴링에서는 1 을 써서 지운다. 0 을 쓰는 것이 아니다.
+//
+// 다음 단계 : 12_Timer0_OVF_ISR  (같은 동작을 인터럽트로)
+/*=======================================================*/
 #include <avr/io.h>
-//#include <avr/interrupt.h>
 
-// from TCNT = (CS/16000000 ) * (256-x) = 8msec
-// 64uS * ? = 8msec
-// x = time * (16000000/CS)
-// 15625*8msec = 125
-#define cDelay 256-125
+// TCNT0 = 256 - 125 = 131.  125 칸을 세면 8 ms 다.
+#define cDelay (256 - 125)
 
 volatile char sec = 0;
-volatile char msec8 = 0;
+volatile char msec8 = 0;                // 8 ms 를 센다
 
 int main(void) {
-	char s1;
+    char s1;
 
-	DDRD |= 0xF0;
-	DDRB |= _BV(PB5);
+    DDRD |= 0xF0;                       // PD7~PD4 출력 (7세그먼트 상위 4비트)
+    DDRB |= _BV(PB5);                   // PB5 = 아두이노 13번, 온보드 LED
 
-	PORTD = (sec << 4);
+    PORTD = (sec << 4);
 
-	TCCR0A = 0;
-	//CS0[2:0]
-	TCCR0B |= (1 << CS02);	// Clock/1024
-	TCCR0B |= (1 << CS00);	// Clock/1024
+    TCCR0A = 0;                         // WGM = 000 -> Normal. 리셋값이지만 명시한다
+    TCCR0B |= (1 << CS02);              // CS02:00 = 101
+    TCCR0B |= (1 << CS00);              //   -> clk/1024
 
-	TCNT0 = cDelay;
-	while (1) {
-		// Check overflow flag
-		if (bit_is_set(TIFR0, TOV0)) {
-			// reset the overflow flag
-			TIFR0 |= _BV(TOV0);
-			TCNT0 = cDelay;
+    TCNT0 = cDelay;                     // 첫 주기의 시작점
+    while (1) {
+        if (bit_is_set(TIFR0, TOV0)) {  // 오버플로했는가
+            TIFR0 |= _BV(TOV0);         // 1 을 써서 플래그를 지운다
+            TCNT0 = cDelay;             // 시작점을 다시 넣는다
 
-			msec8++;
-			if (msec8 == 125) {
-				sec++;
-				msec8 = 0;
-//				s10 = sec / 10;
-				s1 = sec % 10;
-				//PORTD = (s10 << 4) + s1;
-				PORTD = s1<<4;
-			}
-			if (sec == 99) {
-				sec = 0;
-			}
-			PORTB ^= _BV(PB5);
-		}
-	}
+            msec8++;
+            if (msec8 == 125) {         // 8 ms x 125 = 1 s
+                sec++;
+                msec8 = 0;
+                s1 = sec % 10;
+                PORTD = s1 << 4;        // 0~9 를 상위 4비트로
+            }
+            if (sec == 99) {
+                sec = 0;
+            }
+            PORTB ^= _BV(PB5);          // 8 ms 마다 토글 -> 주기 16 ms
+        }
+    }
 }
