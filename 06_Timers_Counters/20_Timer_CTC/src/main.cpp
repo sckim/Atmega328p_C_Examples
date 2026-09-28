@@ -56,7 +56,7 @@ int main(void) {
     OCR0A = cDelay;                     // TOP. 한 번만 쓰면 된다
     while (1) {
         if (bit_is_set(TIFR0, OCF0A)) { // 비교 일치 플래그. Normal 의 TOV0 자리다
-            TIFR0 |= _BV(OCF0A);        // 1 을 써서 지운다
+            TIFR0 = _BV(OCF0A);         // 1 을 써서 지운다 (|= 가 아니다. 10_ 의 주석 참고)
                                         // TCNT0 재설정은 필요 없다 — 하드웨어가 0 으로 되돌린다
 
             msec8++;
