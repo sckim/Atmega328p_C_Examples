@@ -15,7 +15,7 @@
 *   `30_Bootloader`는 Optiboot 원본이다. Makefile과 빌드된 `.hex`는 01의 `30_optiboot` 쪽이 완전하다.
 
 <!-- AUTO-INDEX:BEGIN -->
-<!-- gen_index.py가 만든다. 손으로 고치지 마세요. 기준일 2026-09-29 -->
+<!-- gen_index.py가 만든다. 손으로 고치지 마세요. 기준일 2026-09-30 -->
 
 ### 📂 예제 (3개)
 
