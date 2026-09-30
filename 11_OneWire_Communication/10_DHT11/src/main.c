@@ -85,17 +85,17 @@ static uint8_t dht11_read(uint8_t *humidity, uint8_t *temperature)
     _delay_us(10);
 
     // DHT11 의 응답 : (High) -> Low 80us -> High 80us
-    if (!wait_while(1, 100)) { sei(); return DHT_ERROR_TIMEOUT; }   // DHT11 이 Low 로 내릴 때까지
+    if (!wait_while(1, 100)) { sei(); return DHT_ERROR_TIMEOUT; }   // 응답 대기
     if (!wait_while(0, 100)) { sei(); return DHT_ERROR_TIMEOUT; }   // Low 80us
     if (!wait_while(1, 100)) { sei(); return DHT_ERROR_TIMEOUT; }   // High 80us
 
     // 3. 40비트 수신
     for (uint8_t i = 0; i < 40; i++) {
-        if (!wait_while(0, 100)) { sei(); return DHT_ERROR_TIMEOUT; }   // 비트 사이의 Low 50us
-        uint8_t high = wait_while(1, 120);                              // High 의 길이
+        if (!wait_while(0, 100)) { sei(); return DHT_ERROR_TIMEOUT; } // Low 50us
+        uint8_t high = wait_while(1, 120);                    // High 의 길이
         if (!high) { sei(); return DHT_ERROR_TIMEOUT; }
         data[i / 8] <<= 1;
-        if (high > 35)                                                  // 길면 '1'
+        if (high > 35)                                        // 길면 '1'
             data[i / 8] |= 1;
     }
     sei();

@@ -14,9 +14,9 @@ UART 출력은 PD1(TX), 9600 bps 8N1이다.
 ## 📄 파일
 | 파일 | 내용 |
 |---|---|
-| `onewire.h` / `onewire.c` | Reset·Presence, 비트/바이트 송수신, CRC-8 |
-| `main.c` | DS18B20 명령 시퀀스, 분해능 설정, 1초 주기 측정과 UART 출력 |
-| `platformio.ini` | PlatformIO 빌드 설정 (framework 없음 = bare-metal) |
+| `src/onewire.h` / `src/onewire.c` | Reset·Presence, 비트/바이트 송수신, CRC-8 |
+| `src/main.c` | DS18B20 명령 시퀀스, 분해능 설정, 1초 주기 측정과 UART 출력 |
+| `platformio.ini` | PlatformIO 빌드 설정 (board = uno, framework 없음 = bare-metal) |
 
 ## ⏱ 타이밍
 | 동작 | Low 유지 | 이후 |

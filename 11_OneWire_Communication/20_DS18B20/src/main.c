@@ -118,9 +118,9 @@ int main(void)
             /* raw x 0.0625 = 섭씨. 부동소수점 없이 정수 연산으로 출력한다.
                raw * 625 은 0.0001도 단위이다. */
             int32_t milli = (int32_t)raw * 625 / 10;   /* 0.001도 단위 */
-            int16_t  ip   = (int16_t)(milli / 1000);
-            uint16_t fp   = (uint16_t)((milli < 0 ? -milli : milli) % 1000);
-            printf("T = %d.%03u C  (raw = %d)\n", ip, fp, raw);
+            char sign = ' ';
+            if (milli < 0) { sign = '-'; milli = -milli; }   /* -0.5 도가 0.500 이 되지 않게 */
+            printf("T = %c%ld.%03ld C  (raw = %d)\n", sign, milli / 1000, milli % 1000, raw);
         }
 
         for (uint8_t i = 0; i < 100; i++) _delay_ms(10);   /* 1초 주기 */
