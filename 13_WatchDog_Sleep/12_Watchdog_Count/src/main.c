@@ -1,8 +1,9 @@
 /*=======================================================*/
-// Watchdog_Count : 2초 워치독을 켜고 0.25초마다 센다. 먹이를 주지 않으면 8에서 리셋된다
+// Watchdog_Count : 8초 워치독을 켜고 1초마다 센다. 먹이를 주지 않으면 7~8 에서 리셋된다
 //
-// 교재 21장 실습 21-1. 허경용 교재 코드 28-1(워치독 만료)·28-2(워치독 리셋)를 AVR C 로 옮겼다.
-//   FEED 0 : wdt_reset() 을 하지 않는다 -> 2초 뒤 리셋, "** Initialization **" 부터 다시
+// 교재 21장 실습 21-1. 허경용 교재 코드 28-1(워치독 만료)·28-2(워치독 리셋)를 옮겼다.
+// 교재 코드와 같은 값(8초, 1초)이다. 교재의 UART 함수 대신 printf_P 를 쓰고 리셋 원인을 더 찍는다.
+//   FEED 0 : wdt_reset() 을 하지 않는다 -> 8초 뒤 리셋, "** Initialization **" 부터 다시
 //   FEED 1 : 셀 때마다 wdt_reset() -> 리셋 없이 계속 센다
 //
 // 켤 때 리셋 원인(MCUSR)을 찍는다. 이 값은 main() 전에(.init3) 읽고 지우며 워치독도 끈다.
@@ -59,10 +60,10 @@ int main(void)
     PRINT("** Initialization **  MCUSR = 0x%02X%s\n", reset_cause,
           (reset_cause & (1 << WDRF)) ? "  (워치독 리셋)" : "");
 
-    wdt_enable(WDTO_2S);                // 2초 안에 먹이를 주지 않으면 리셋
+    wdt_enable(WDTO_8S);                // 8초 안에 먹이를 주지 않으면 리셋
     uint16_t count = 0;
     while (1) {
-        _delay_ms(250);
+        _delay_ms(1000);
         PRINT("Count : %u\n", ++count);
 #if FEED
         wdt_reset();                    // 먹이를 준다 : 타이머를 0 으로
