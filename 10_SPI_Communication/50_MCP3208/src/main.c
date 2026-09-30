@@ -77,7 +77,7 @@ static uint16_t mcp3208_read(uint8_t ch)          // ch : 0 ~ 7
 {
     PORTB &= ~(1 << CS_PIN);                      // /CS = Low : 변환 시작
     spi_transfer(0x06 | (ch >> 2));               // 시작 비트 + SGL/DIFF + D2
-    uint8_t hi = spi_transfer((ch & 0x03) << 6);  // D1 D0 를 보내면서 상위 4비트를 받는다
+    uint8_t hi = spi_transfer((ch & 0x03) << 6);  // D1 D0 보내며 상위 4비트
     uint8_t lo = spi_transfer(0x00);              // 하위 8비트
     PORTB |= (1 << CS_PIN);                       // /CS = High
     return ((uint16_t)(hi & 0x0F) << 8) | lo;

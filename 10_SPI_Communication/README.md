@@ -25,16 +25,18 @@
 <!-- AUTO-INDEX:BEGIN -->
 <!-- gen_index.py가 만든다. 손으로 고치지 마세요. 기준일 2026-09-30 -->
 
-### 📂 예제 (7개)
+### 📂 예제 (9개)
 
 | 폴더 | 내용 | 소스 | 줄 | PlatformIO | 회로도 | Wokwi | README |
 |---|---|---:|---:|:---:|:---:|:---:|:---:|
 | `10_Comm_SPI` |  | 1 | 49 |  |  |  |  |
 | `20_SerialShift_595` | 시프트 레지스터 74HC595 로 출력 핀 8개를 3개로 늘린다 | 1 | 38 | ✓ | ✓ |  |  |
 | `22_74LS595_oop` | 2019. 7. 22. | 2 | 69 |  | ✓ |  |  |
+| `24_SPI_595_Hardware` | 74HC595 를 하드웨어 SPI 로 구동한다. SPDR 에 쓰면 끝이다 | 1 | 34 | ✓ |  |  |  |
 | `30_MAX7219` |  | 2 | 218 | ✓ | ✓ |  |  |
 | `32_MAX7219_Software` |  | 2 | 280 |  | ✓ |  |  |
 | `40_DigitalPot` | Interrupt UART library with receive/transmit circula | 2 | 724 |  | ✓ |  |  |
 | `50_MCP3208` | 12비트 8채널 SPI ADC 를 하드웨어 SPI 로 읽는다 | 1 | 67 | ✓ |  |  |  |
+| `60_SPI_Loopback_Frame` | MOSI 와 MISO 를 이어 5바이트 프레임을 주고받고, 인터럽트로 조립한다 | 1 | 84 | ✓ |  |  |  |
 
 <!-- AUTO-INDEX:END -->
