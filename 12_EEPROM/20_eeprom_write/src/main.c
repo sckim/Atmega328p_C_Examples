@@ -63,7 +63,7 @@ static void ee_write(uint16_t addr, uint8_t data)
     EEAR = addr;                        // 2. 주소, 데이터
     EEDR = data;
     uint8_t sreg = SREG;
-    cli();                              // 3. EEMPE -> (4클럭 이내) EEPE 사이에 인터럽트 금지
+    cli();                              // 3. EEMPE -> 4클럭 안에 EEPE
     EECR |= (1 << EEMPE);
     EECR |= (1 << EEPE);
     SREG = sreg;                        // 인터럽트 상태 복원
@@ -74,7 +74,7 @@ static uint8_t ee_read(uint16_t addr)
     while (EECR & (1 << EEPE))          // 쓰기 중이면 기다린다
         ;
     EEAR = addr;
-    EECR |= (1 << EERE);                // 읽기 시작 (CPU 가 4클럭 멈추고 바로 EEDR 에 값이 들어온다)
+    EECR |= (1 << EERE);                // 읽기 (CPU 4클럭 멈춤)
     return EEDR;
 }
 
