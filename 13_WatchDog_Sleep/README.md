@@ -19,11 +19,12 @@
 <!-- AUTO-INDEX:BEGIN -->
 <!-- gen_index.py가 만든다. 손으로 고치지 마세요. 기준일 2026-09-30 -->
 
-### 📂 예제 (5개)
+### 📂 예제 (6개)
 
 | 폴더 | 내용 | 소스 | 줄 | PlatformIO | 회로도 | Wokwi | README |
 |---|---|---:|---:|:---:|:---:|:---:|:---:|
-| `10_Watchdog_Basic` |  | 1 | 49 |  |  |  |  |
+| `10_Watchdog_Basic` | 워치독을 켜고 제때 wdt_reset() 으로 먹이를 준다. 원래 Microchip Studi | 2 | 102 | ✓ |  |  |  |
+| `12_Watchdog_Count` | 2초 워치독을 켜고 0.25초마다 센다. 먹이를 주지 않으면 8에서 리셋된다 | 1 | 48 | ✓ |  |  |  |
 | `20_Sleep_delay` | delay 대신 "잠자면서 기다리는" 지연 함수 | 1 | 95 | ✓ |  |  |  |
 | `30_IDLE_Sleep_ExtInterrupt` | Idle 슬립에 들었다가 외부 인터럽트(INT0)로 깨어난다 | 1 | 40 | ✓ |  |  |  |
 | `40_Deep_Sleep_ExtInterrupt` | Power-down 슬립에 들었다가 외부 인터럽트(INT0)로 깨어난다 | 1 | 73 | ✓ |  |  |  |

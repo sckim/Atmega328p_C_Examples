@@ -71,18 +71,18 @@ static void sleep_for_wdt(uint8_t wdp)
 {
     cli();
     wdt_reset();
-    MCUSR &= ~(1 << WDRF);                       // WDRF 가 켜져 있으면 WDE 를 끌 수 없다
-    WDTCSR |= (1 << WDCE) | (1 << WDE);          // 4클럭 안에 새 값을 써야 하는 타이밍 시퀀스
+    MCUSR &= ~(1 << WDRF);                       // WDRF 가 서 있으면 WDE 못 끔
+    WDTCSR |= (1 << WDCE) | (1 << WDE);          // 4클럭 안에 새 값
     WDTCSR = (1 << WDIE) | wdp;                  // 인터럽트 모드 + 타임아웃
 
     set_sleep_mode(SLEEP_MODE_PWR_DOWN);
     sleep_enable();
-    sleep_bod_disable();                         // 슬립 중 BOD 를 꺼서 전류를 더 줄인다
-    sei();                                       // sei 다음 한 명령은 인터럽트 없이 실행되므로 sleep_cpu 를 놓치지 않는다
+    sleep_bod_disable();                         // 슬립 중 BOD 끄기
+    sei();                                       // 다음 한 명령은 인터럽트 없이
     sleep_cpu();                                 // ---- 여기서 잠든다 ----
     sleep_disable();
 
-    cli();                                       // 깨어난 뒤 WDT 를 끈다 (계속 두면 반복해서 깨운다)
+    cli();                                       // 깨어나면 WDT 를 끈다
     wdt_reset();
     MCUSR &= ~(1 << WDRF);
     WDTCSR |= (1 << WDCE) | (1 << WDE);

@@ -38,7 +38,7 @@ ISR(INT0_vect)
 
 static void sleep_now(void)
 {
-    EICRA &= ~((1 << ISC01) | (1 << ISC00));   // ISC0 = 00 : INT0 핀이 Low 레벨일 때 인터럽트
+    EICRA &= ~((1 << ISC01) | (1 << ISC00));   // ISC0 = 00 : Low 레벨
     EIFR = (1 << INTF0);                       // 이미 걸려 있던 플래그 지움
     EIMSK |= (1 << INT0);                      // INT0 허용
 
@@ -46,8 +46,8 @@ static void sleep_now(void)
     cli();                                     // 준비하는 동안 인터럽트 금지
     sleep_enable();
     PORTB &= ~(1 << PB5);                      // LED 끄기 : 슬립 중임을 표시
-    sei();                                     // sei 다음 한 명령 뒤에 인터럽트가 허용되므로
-    sleep_cpu();                               // 인터럽트를 놓치고 영원히 자는 일이 없다
+    sei();                                     // 다음 한 명령은 인터럽트 없이
+    sleep_cpu();                               // 그래서 놓치지 않는다
     sleep_disable();
     PORTB |= (1 << PB5);                       // 깨어남 : LED 켜기
 }
