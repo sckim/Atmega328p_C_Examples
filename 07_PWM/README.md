@@ -33,7 +33,7 @@ Phase-correct : f = F_CPU / (2 × 프리스케일 × TOP)
 <!-- AUTO-INDEX:BEGIN -->
 <!-- gen_index.py가 만든다. 손으로 고치지 마세요. 기준일 2026-09-30 -->
 
-### 📂 예제 (13개)
+### 📂 예제 (15개)
 
 | 폴더 | 내용 | 소스 | 줄 | PlatformIO | 회로도 | Wokwi | README |
 |---|---|---:|---:|:---:|:---:|:---:|:---:|
@@ -42,12 +42,14 @@ Phase-correct : f = F_CPU / (2 × 프리스케일 × TOP)
 | `14_PWM_Dual` |  | 1 | 15 |  | ✓ |  |  |
 | `16_PWM_ADC` |  | 1 | 36 |  | ✓ |  |  |
 | `20_Timer0_PWM` |  | 1 | 22 |  | ✓ |  |  |
-| `30_Timer0_FastPWM` |  | 1 | 17 | ✓ | ✓ |  |  |
+| `30_Timer0_FastPWM` | Timer0 Fast PWM 으로 OC0A(PD6)·OC0B(PD5)에 PWM 두 개를 낸다 | 1 | 19 | ✓ | ✓ |  |  |
 | `32_Timer0_FastPWM2` |  | 2 | 43 |  | ✓ |  |  |
 | `34_FastPWM` |  | 1 | 32 | ✓ | ✓ |  |  |
 | `36_Timer0_CTC_PWM` | TCNT0가 0이면 16.384ms 마다 overflow 발생 | 1 | 31 |  | ✓ |  |  |
+| `38_FastPWM_Tone` | TOP 을 OCR0A 로 옮겨 PWM 의 주파수를 바꾼다. 부저로 음계를 낸다 | 1 | 25 | ✓ |  |  |  |
 | `40_Timer1_PWM` |  | 1 | 15 |  | ✓ |  |  |
 | `42_Timer1_FastPWM` | (percentage < 0 ? 0 : percentage)); | 2 | 211 |  | ✓ |  |  |
+| `44_Timer1_Servo` | 서보 펄스를 Timer1 하드웨어 PWM 으로 만든다. CPU 는 각도만 바꾼다 | 1 | 28 | ✓ |  |  |  |
 | `50_PWM_Timer0Interrupt` |  | 2 | 60 |  | ✓ |  |  |
 | `60_PWM_Arduino_Style` | 2017. 10. 27. | 1 | 190 |  | ✓ |  |  |
 

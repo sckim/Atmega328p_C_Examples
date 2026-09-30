@@ -33,10 +33,8 @@ void PWM1_INIT() {
 	// OC1B output: Non-Inverted PWM
 	// Noise Canceler: Off
 	// Input Capture on Falling Edge
-	// Timer Period: 1 s
-	// Output Pulse(s):
-	// OC1A Period: 1 s Width: 0.2 s
-	// OC1B Period: 1 s Width: 0.40001 s
+	// Timer Period: SetPeriod() 가 ICR1 로 정한다. main 에서 SetPeriod(100) -> ICR1 = 624, 10 ms (100 Hz)
+	// Output Pulse(s): OCR1A·OCR1B 는 SpeedA()·SpeedB() 가 ICR1 의 % 로 정한다
 	// Timer1 Overflow Interrupt: Off
 	// Input Capture Interrupt: Off
 	// Compare A Match Interrupt: Off
