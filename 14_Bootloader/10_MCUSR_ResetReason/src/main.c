@@ -15,16 +15,22 @@
 //      그래서 시작 즉시 MCUSR 를 저장하고 지운 뒤 wdt_disable() 을 호출해야 한다.
 //      이 처리는 main() 이 시작되기 전인 ".init3" 섹션에서 해야 안전하다.
 //
-// 부트로더가 있는 경우 (Arduino Uno 의 Optiboot)
-//   부트로더가 먼저 실행되어 MCUSR 를 읽고 지운 뒤 레지스터 r2 에 복사해서 넘겨 준다.
-//   그러면 우리 프로그램이 시작할 때 MCUSR 는 이미 0 이다. 그래서 두 방법을 모두 저장한다.
-//     - r2 : .init0 섹션(가장 먼저 실행되는 코드)에서 저장    -> 부트로더가 있는 보드
-//     - MCUSR : .init3 섹션에서 저장                         -> 부트로더 없이 ISP 로 올린 경우
+// 부트로더가 있는 경우 (Arduino Uno)
+//   우노에 든 Optiboot 4.4 는 먼저 실행되어 MCUSR 를 읽고 0 으로 지운다. 넘겨 주지는 않는다.
+//   그래서 우노에서는 이 프로그램이 시작할 때 MCUSR 가 늘 0 이다.
+//   Optiboot 4.6 부터는 지운 값을 레지스터 r2 에 넣어 넘겨 준다. 그 판을 구운 보드에서만 r2 가 쓸모 있다.
+//     - MCUSR : .init3 섹션에서 저장    -> 부트로더 없이 ISP 로 올린 경우 (판단은 이 값으로 한다, 교재 22장)
+//     - r2    : .init0 섹션에서 저장    -> 참고로만 찍는다
+//   리셋은 I/O 레지스터만 초깃값으로 돌린다. r0~r31 은 초기화된다는 보장이 없다.
+//   r2 를 채워 주는 부트로더가 없으면 r2 에는 리셋 전 값이 남는다. 그것을 리셋 원인으로 믿으면
+//   엉뚱한 원인이 찍힌다 (simavr 에서 r2 = 4 를 남겨 두면 "Brown-out" 이 찍혔다).
 //
 // 관찰 방법 (UART 9600bps)
 //   1. 리셋 버튼을 누른다               -> External Reset
 //   2. 전원을 껐다 켠다                 -> Power-on Reset
 //   3. 10_Watchdog_Basic 처럼 WDT 를 켜고 wdt_reset() 을 하지 않는다 -> Watchdog Reset
+//   이 셋이 갈려 보이는 것은 ISP 로 올리고 BOOTRST 를 끈(High 퓨즈 0xDF) 보드다.
+//   기본 우노에서는 셋 다 "플래그 없음"이다 (simavr 는 부트로더가 없어 갈려 보인다).
 //
 // 선행 학습 : 13_WatchDog_Sleep/10_Watchdog_Basic      다음 단계 : 20_Read_Signature_Fuses
 /*=======================================================*/
@@ -41,7 +47,7 @@
 uint8_t reset_flags_r2 __attribute__((section(".noinit")));
 uint8_t reset_flags_mcusr __attribute__((section(".noinit")));
 
-// .init0 : 리셋 직후 가장 먼저 실행된다. 부트로더가 r2 에 넣어 준 값을 가로챈다.
+// .init0 : 리셋 직후 가장 먼저 실행된다. r2 를 가로챈다 (Optiboot 4.6 이상에서만 리셋 원인이다).
 void get_reset_flags_r2(void) __attribute__((naked)) __attribute__((used)) __attribute__((section(".init0")));
 void get_reset_flags_r2(void)
 {
@@ -89,14 +95,14 @@ int main(void)
 
     PRINT("=== MCUSR Reset Reason ===\n");
     PRINT("MCUSR 직접 읽은 값 (.init3) = 0b"); print_bin(reset_flags_mcusr); putchar('\n');
-    PRINT("r2 로 받은 값 (.init0, 부트로더) = 0b"); print_bin(reset_flags_r2); putchar('\n');
+    PRINT("r2 (.init0, Optiboot 4.6 이상에서만 의미) = 0b"); print_bin(reset_flags_r2); putchar('\n');
 
-    uint8_t flags = reset_flags_mcusr ? reset_flags_mcusr : reset_flags_r2;   // 둘 중 값이 있는 쪽을 쓴다
+    uint8_t flags = reset_flags_mcusr;   // r2 는 믿지 않는다: 채워 주는 부트로더가 없으면 남은 값이다
     if (flags & (1 << WDRF))  PRINT("-> Watchdog Reset (WDRF)\n");
     if (flags & (1 << BORF))  PRINT("-> Brown-out Reset (BORF)\n");
     if (flags & (1 << EXTRF)) PRINT("-> External Reset (리셋 버튼, EXTRF)\n");
     if (flags & (1 << PORF))  PRINT("-> Power-on Reset (PORF)\n");
-    if (flags == 0)           PRINT("-> (플래그 없음: 부트로더나 다른 코드가 이미 지웠을 수 있다)\n");
+    if (flags == 0)           PRINT("-> (플래그 없음: 부트로더가 이미 지웠다. 우노의 Optiboot 4.4 가 그렇다)\n");
 
     while (1)
         ;
